@@ -1,3 +1,123 @@
 // Variables
 @import 'variables';
 
+header {
+    background-color: $offBlack;
+    color: white;
+    section {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        nav {
+            width: 40%;
+            ul {
+                width: 100%;
+                display: inline-flex;
+                justify-content: space-between;
+                padding: 0;
+                li {
+                    list-style-type: none;
+                    a {
+                        color: white;
+                        text-decoration: none;
+                    }
+                    form button[type=submit] {
+                        background-color: transparent;
+                        border: none;
+                        color: white;
+                        font-family: 'Poppins', sans-serif;
+                        font-weight: normal;
+                        font-size: 16px;
+                        padding: 0;
+                    }
+                }
+                li:hover,  form button[type=submit]:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    } 
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    section {
+        margin: 20px 0;
+    }
+    .twoThirds {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        article {
+            width: 57%;
+        }
+        aside {
+            width: 35%;
+            background-color: $yellow;
+            padding: 1.5%;
+            max-height: 65vh;
+            overflow-y: scroll;
+            h3 {
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .projectsSearch {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        form {
+            width: 50%;
+            input {
+                width: 100%;
+                border-radius: 5px;
+                border: 1px solid $offBlack;
+                padding: 4px;
+            }
+        }
+        button {
+            background-color: $yellow;
+            border: none;
+            width: 20%;
+            padding: 10px 0;
+            border-radius: 5px;
+        }
+        .back {
+            margin-top: none;
+        }
+    }
+    .operative {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        img {
+            width: 25%;
+        }
+        div {
+            width: 70%;
+        }
+    }
+    .ppeDisplay {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        flex-wrap: wrap;
+        div {
+            width: 30%;
+            background-color: $offBlack;
+            img {
+                width: 100%;
+            }
+            p {
+                font-weight: bold;
+                text-align: center;
+                color: white;
+            }
+        }
+    }
+}

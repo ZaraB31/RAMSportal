@@ -233,123 +233,46 @@ form.fullPage .checkboxes {
   background-color: #D88809;
 }
 
-header {
+body {
   background-color: #29292A;
   color: white;
-}
-header section {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header section nav {
-  width: 40%;
-}
-header section nav ul {
-  width: 100%;
-  display: inline-flex;
-  justify-content: space-between;
-  padding: 0;
-}
-header section nav ul li {
-  list-style-type: none;
-}
-header section nav ul li a {
-  color: white;
-  text-decoration: none;
-}
-header section nav ul li form button[type=submit] {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  padding: 0;
-}
-header section nav ul li:hover, header section nav ul form button[type=submit]:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
-main {
-  width: 80%;
+section {
+  width: 50%;
   margin: auto;
 }
-main section {
-  margin: 20px 0;
+section img {
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 20px;
 }
-main .twoThirds {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-}
-main .twoThirds article {
-  width: 57%;
-}
-main .twoThirds aside {
-  width: 35%;
-  background-color: #F6A21E;
-  padding: 1.5%;
-  max-height: 65vh;
-  overflow-y: scroll;
-}
-main .twoThirds aside h3 {
-  margin-top: 0;
+section .error {
+  background-color: #F6361E;
+  padding: 1px 15px;
   margin-bottom: 20px;
 }
-main .projectsSearch {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+section form label, section form input[type=submit] {
+  font-size: 1em;
 }
-main .projectsSearch form {
-  width: 50%;
-}
-main .projectsSearch form input {
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #29292A;
+section form input {
+  width: 98.5%;
+  margin-bottom: 10px;
   padding: 4px;
 }
-main .projectsSearch button {
+section form input[type=checkbox] {
+  width: -moz-max-content;
+  width: max-content;
+}
+section form input[type=submit] {
   background-color: #F6A21E;
   border: none;
-  width: 20%;
-  padding: 10px 0;
-  border-radius: 5px;
+  width: 40%;
+  float: right;
+  padding: 8px 0;
 }
-main .projectsSearch .back {
-  margin-top: none;
-}
-main .operative {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-}
-main .operative img {
-  width: 25%;
-}
-main .operative div {
-  width: 70%;
-}
-main .ppeDisplay {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  flex-wrap: wrap;
-}
-main .ppeDisplay div {
-  width: 30%;
-  background-color: #29292A;
-}
-main .ppeDisplay div img {
-  width: 100%;
-}
-main .ppeDisplay div p {
-  font-weight: bold;
-  text-align: center;
-  color: white;
+section form input[type=submit]:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: #D88809;
 }
