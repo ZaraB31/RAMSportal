@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Client;
 
 class AdminController extends Controller
 {
@@ -13,10 +14,10 @@ class AdminController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the application dashboard.
@@ -39,5 +40,11 @@ class AdminController extends Controller
         $companies = Company::all();
         
         return view('admin/companies', ['companies' => $companies]);
+    }
+
+    public function clients() {
+        $clients = Client::all()->sortBy('name');
+
+        return view('admin/clients', ['clients' => $clients]);
     }
 }
