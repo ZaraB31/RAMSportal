@@ -12,4 +12,12 @@ class Tool extends Model
     protected $fillable = [
         'name', 'section_id',
     ];
+
+    public function section() {
+        return $this->hasOne(Section::Class);
+    }
+
+    public function method() {
+        return $this->belongsToMany(MethodTool::class);
+    }
 }

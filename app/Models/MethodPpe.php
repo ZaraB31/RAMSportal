@@ -12,4 +12,12 @@ class MethodPpe extends Model
     protected $fillable = [
         'method_id', 'ppe_id',  
     ];
+
+    public function method() {
+        return $this->hasMany(Method::class);
+    }
+
+    public function PPE() {
+        return $this->hasMany(Ppe::class);
+    }
 }

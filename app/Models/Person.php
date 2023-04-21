@@ -12,4 +12,8 @@ class Person extends Model
     protected $fillable = [
         'person',  
     ];
+
+    public function risk() {
+        return $this->belongsTo(Risk::class);
+    }
 }

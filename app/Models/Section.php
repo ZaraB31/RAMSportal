@@ -12,4 +12,12 @@ class Section extends Model
     protected $fillable = [
         'name', 'type',  
     ];
+
+    public function risk() {
+        return $this->belongsToMany(RiskSection::class);
+    }
+
+    public function tool() {
+        return $this->belongsTo(Tool::class);
+    }
 }

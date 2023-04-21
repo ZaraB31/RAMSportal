@@ -12,4 +12,8 @@ class Ppe extends Model
     protected $fillable = [
         'name', 'icon',   
     ];
-}
+
+    public function method() {
+        return $this->belongsToMany(MethodPpe::class);
+    }
+} 

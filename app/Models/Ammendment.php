@@ -12,4 +12,8 @@ class Ammendment extends Model
     protected $fillable = [
         'project_id', 'version', 'comment',
     ];
+
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
 }

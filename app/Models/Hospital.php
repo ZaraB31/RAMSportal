@@ -12,4 +12,8 @@ class Hospital extends Model
     protected $fillable = [
         'name', 'address',  
     ];
+
+    public function detail() {
+        return $this->belongsTo(Detail::class);
+    }
 }

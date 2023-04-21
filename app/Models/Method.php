@@ -12,4 +12,20 @@ class Method extends Model
     protected $fillable = [
         'project_id', 'description',
     ];
+
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function sequence() {
+        return $this->hasMany(Sequence::class);
+    }
+
+    public function PPE() {
+        return $this->belongsToMany(MethodPpe::class);
+    }
+
+    public function tool() {
+        return $this->belongsToMany(MethodTool::class);
+    }
 }

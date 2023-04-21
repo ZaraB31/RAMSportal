@@ -12,4 +12,8 @@ class Sequence extends Model
     protected $fillable = [
         'method_id', 'stepNo', 'description',
     ];
+
+    public function method() {
+        return $this->belongsTo(Method::class);
+    }
 }

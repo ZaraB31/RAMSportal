@@ -12,4 +12,16 @@ class Company extends Model
     protected $fillable = [
         'name', 'address', 'phoneNo', 'email',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function operative() {
+        return $this->belongsTo(Operative::class);
+    }
+
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
 }

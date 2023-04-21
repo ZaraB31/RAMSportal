@@ -12,4 +12,16 @@ class Risk extends Model
     protected $fillable = [
         'hazard', 'effect', 'likelihood', 'severity', 'control', 'residualLikelihood', 'residualSeverity', 'person_id',
     ];
+
+    public function project() {
+        return $this->belongsToMany(ProjectRisk::class);
+    }
+
+    public function person() {
+        return $this->hasOne(Person::class);
+    }
+
+    public function section() {
+        return $this->belongsToMany(RiskSection::class);
+    }
 }
