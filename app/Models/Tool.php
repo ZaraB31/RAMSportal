@@ -14,7 +14,7 @@ class Tool extends Model
     ];
 
     public function section() {
-        return $this->hasOne(Section::Class);
+        return $this->belongsTo(Section::Class);
     }
 
     public function method() {

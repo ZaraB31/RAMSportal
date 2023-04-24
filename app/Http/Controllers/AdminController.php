@@ -10,6 +10,7 @@ use App\Models\Operative;
 use App\Models\Hospital;
 use App\Models\Ppe;
 use App\Models\Section;
+use App\Models\Tool;
 
 class AdminController extends Controller
 {
@@ -75,5 +76,13 @@ class AdminController extends Controller
         $sections = Section::all()->sortBy('name');
 
         return view('admin/sections', ['sections' => $sections]);
+    }
+
+    public function tools() {
+        $tools = Tool::all();
+        $sections = Section::where('type', 'tools')->get();
+
+        return view('admin/tools', ['sections' => $sections,
+                                    'tools' => $tools]);
     }
 }

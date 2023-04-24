@@ -18,6 +18,6 @@ class Section extends Model
     }
 
     public function tool() {
-        return $this->belongsTo(Tool::class);
+        return $this->hasMany(Tool::class);
     }
 }
