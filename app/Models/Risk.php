@@ -22,6 +22,6 @@ class Risk extends Model
     }
 
     public function section() {
-        return $this->belongsToMany(RiskSection::class);
+        return $this->belongsToMany(Section::class, 'risk_sections');
     }
 }

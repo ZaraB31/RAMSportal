@@ -160,6 +160,10 @@ form.fullPage {
         width: 30%;
         display: flex;
         align-items: center;
+        input[type=checkbox] {
+            margin: 5px;
+            margin-right: 10px;
+        }
     }
     .checkboxes {
         display: flex;

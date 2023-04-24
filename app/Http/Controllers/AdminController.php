@@ -12,6 +12,7 @@ use App\Models\Ppe;
 use App\Models\Section;
 use App\Models\Tool;
 use App\Models\Person;
+use App\Models\Risk;
 
 class AdminController extends Controller
 {
@@ -91,5 +92,21 @@ class AdminController extends Controller
         $people = Person::all();
 
         return view('admin/people', ['people' => $people]);
+    }
+
+    public function risks() {
+        $risks = Risk::all();
+
+        $before = [];
+        $after = [];
+
+        foreach($risks as $risk) {
+            $before[$risk['id']] = $risk['likelihood'] * $risk['severity'];
+            $after[$risk['id']] = $risk['residualLikelihood'] * $risk['residualSeverity'];
+        }
+
+        return view('admin/risks', ['risks' => $risks, 
+                                    'before' => $before,
+                                    'after' => $after]);
     }
 }

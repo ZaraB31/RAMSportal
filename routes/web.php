@@ -27,6 +27,7 @@ Route::get('/Admin/PPE', [App\Http\Controllers\AdminController::class, 'PPEs'])-
 Route::get('/Admin/Sections', [App\Http\Controllers\AdminController::class, 'sections'])->name('adminSections');
 Route::get('/Admin/Tools', [App\Http\Controllers\AdminController::class, 'tools'])->name('adminTools');
 Route::get('/Admin/People', [App\Http\Controllers\AdminController::class, 'people'])->name('adminPeople');
+Route::get('/Admin/Risks', [App\Http\Controllers\AdminController::class, 'risks'])->name('adminRisks');
 
 Route::post('Admin/Companies/Create', [App\Http\Controllers\CompanyController::class, 'store'])->name('storeCompany');
 Route::post('Admin/Clients/Create', [App\Http\Controllers\ClientController::class, 'store'])->name('storeClient');
@@ -36,3 +37,5 @@ Route::post('Admin/PPE/Create', [App\Http\Controllers\PpeController::class, 'sto
 Route::post('Admin/Sections/Create', [App\Http\Controllers\SectionController::class, 'store'])->name('storeSection');
 Route::post('Admin/Tools/Create', [App\Http\Controllers\ToolController::class, 'store'])->name('storeTool');
 Route::post('Admin/People/Create', [App\Http\Controllers\PersonController::class, 'store'])->name('storePerson');
+Route::get('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'create'])->name('createRisk');
+Route::post('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'store'])->name('storeRisk');
