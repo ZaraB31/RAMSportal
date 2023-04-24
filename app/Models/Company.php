@@ -18,7 +18,7 @@ class Company extends Model
     }
 
     public function operative() {
-        return $this->belongsTo(Operative::class);
+        return $this->HasMany(Operative::class);
     }
 
     public function project() {

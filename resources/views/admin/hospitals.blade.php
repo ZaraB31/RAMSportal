@@ -16,31 +16,38 @@
 
     <section class="twoThirds">
         <article>
-            @if($clients->count() > 0)
-                @foreach($clients as $client)
-                <div class="card">
-                    <h3>{{$client->name}}</h3>
+            @if($hospitals->count() > 0)
+                @foreach($hospitals as $hospital)
+                <div class="hospital card">
+                    <h3>{{$hospital->name}}</h3>
+                    <p><b>Address: </b>{{$hospital->address}}</p>
                 </div>
                 @endforeach
             @else 
                 <div class="card">
-                    <h3>No clients added</h3>
+                    <h3>No hospitals added</h3>
                 </div>
             @endif
+
         </article>
 
         <aside>
-            <h3>Add New Client</h3>
+            <h3>Add new hospital</h3>
 
-            <form action="{{ route('storeClient') }}" method="post">
+            <form action="{{ route('storeHospital') }}" method="post">
                 @include('includes.error')
 
-                <label for="name">Name:</label>
+                <label for="name">Hospital Name:</label>
                 <input type="text" name="name" id="name">
 
+                <label for="address">Hosital Address: </label>
+                <textarea name="address" id="address"></textarea>
+
                 <input class="inverse" type="submit" value="Save">
+
             </form>
         </aside>
+        
     </section>
 </main>
 

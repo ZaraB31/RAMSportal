@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Operative;
+use App\Models\Hospital;
 
 class AdminController extends Controller
 {
@@ -46,5 +48,18 @@ class AdminController extends Controller
         $clients = Client::all()->sortBy('name');
 
         return view('admin/clients', ['clients' => $clients]);
+    }
+
+    public function operatives() {
+        $operatives = Operative::all()->sortBy('name');
+        $companies = Company::all();
+
+        return view('admin/operatives', ['operatives' => $operatives, 'companies' => $companies]);
+    }
+
+    public function hospitals() {
+        $hospitals = Hospital::all();
+
+        return view('admin/hospitals', ['hospitals' => $hospitals]);
     }
 }

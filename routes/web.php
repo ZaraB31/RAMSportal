@@ -21,6 +21,10 @@ Route::get('/Admin', [App\Http\Controllers\AdminController::class, 'index'])->na
 Route::get('/Admin/Companies', [App\Http\Controllers\AdminController::class, 'companies'])->name('adminCompanies');
 Route::get('/Admin/Users', [App\Http\Controllers\AdminController::class, 'users'])->name('adminUsers');
 Route::get('/Admin/Clients', [App\Http\Controllers\AdminController::class, 'clients'])->name('adminClients');
+Route::get('/Admin/Operatives', [App\Http\Controllers\AdminController::class, 'operatives'])->name('adminOperatives');
+Route::get('/Admin/Hospitals', [App\Http\Controllers\AdminController::class, 'hospitals'])->name('adminHospitals');
 
 Route::post('Admin/Companies/Create', [App\Http\Controllers\CompanyController::class, 'store'])->name('storeCompany');
 Route::post('Admin/Clients/Create', [App\Http\Controllers\ClientController::class, 'store'])->name('storeClient');
+Route::post('Admin/Operatives/Create', [App\Http\Controllers\OperativeController::class, 'store'])->name('storeOperative');
+Route::post('Admin/Hospitals/Create', [App\Http\Controllers\HospitalController::class, 'store'])->name('storeHospital');
