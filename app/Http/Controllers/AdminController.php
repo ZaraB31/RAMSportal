@@ -11,6 +11,7 @@ use App\Models\Hospital;
 use App\Models\Ppe;
 use App\Models\Section;
 use App\Models\Tool;
+use App\Models\Person;
 
 class AdminController extends Controller
 {
@@ -84,5 +85,11 @@ class AdminController extends Controller
 
         return view('admin/tools', ['sections' => $sections,
                                     'tools' => $tools]);
+    }
+
+    public function people() {
+        $people = Person::all();
+
+        return view('admin/people', ['people' => $people]);
     }
 }
