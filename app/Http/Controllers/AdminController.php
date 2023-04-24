@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Client;
 use App\Models\Operative;
 use App\Models\Hospital;
+use App\Models\Ppe;
 
 class AdminController extends Controller
 {
@@ -61,5 +62,11 @@ class AdminController extends Controller
         $hospitals = Hospital::all();
 
         return view('admin/hospitals', ['hospitals' => $hospitals]);
+    }
+
+    public function PPEs() {
+        $PPEs = Ppe::all();
+
+        return view('admin/PPEs', ['PPEs' => $PPEs]);
     }
 }
