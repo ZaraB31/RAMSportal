@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Operative;
 use App\Models\Hospital;
 use App\Models\Ppe;
+use App\Models\Section;
 
 class AdminController extends Controller
 {
@@ -68,5 +69,11 @@ class AdminController extends Controller
         $PPEs = Ppe::all();
 
         return view('admin/PPEs', ['PPEs' => $PPEs]);
+    }
+
+    public function sections() {
+        $sections = Section::all()->sortBy('name');
+
+        return view('admin/sections', ['sections' => $sections]);
     }
 }

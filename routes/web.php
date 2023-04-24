@@ -24,9 +24,11 @@ Route::get('/Admin/Clients', [App\Http\Controllers\AdminController::class, 'clie
 Route::get('/Admin/Operatives', [App\Http\Controllers\AdminController::class, 'operatives'])->name('adminOperatives');
 Route::get('/Admin/Hospitals', [App\Http\Controllers\AdminController::class, 'hospitals'])->name('adminHospitals');
 Route::get('/Admin/PPE', [App\Http\Controllers\AdminController::class, 'PPEs'])->name('adminPPE');
+Route::get('/Admin/Sections', [App\Http\Controllers\AdminController::class, 'sections'])->name('adminSections');
 
 Route::post('Admin/Companies/Create', [App\Http\Controllers\CompanyController::class, 'store'])->name('storeCompany');
 Route::post('Admin/Clients/Create', [App\Http\Controllers\ClientController::class, 'store'])->name('storeClient');
 Route::post('Admin/Operatives/Create', [App\Http\Controllers\OperativeController::class, 'store'])->name('storeOperative');
 Route::post('Admin/Hospitals/Create', [App\Http\Controllers\HospitalController::class, 'store'])->name('storeHospital');
 Route::post('Admin/PPE/Create', [App\Http\Controllers\PpeController::class, 'store'])->name('storePPE');
+Route::post('Admin/Sections/Create', [App\Http\Controllers\SectionController::class, 'store'])->name('storeSection');
