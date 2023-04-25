@@ -17,6 +17,7 @@ use App\Models\MethodTool;
 use App\Models\Sequence;
 use App\Models\Section;
 use App\Models\ProjectRisk;
+use App\Models\ProjectOperative;
 use Auth;
 
 class ProjectController extends Controller
@@ -89,6 +90,14 @@ class ProjectController extends Controller
             'supervisor_id' => $request['supervisor_id'],
             'manager_id' => $request['manager_id'],
         ]);
+
+        foreach($request->get('operative_id') as $operative) {
+            $projectOperatives = ProjectOperative::create([
+                'project_id' => $project['id'],
+                'operative_id' => $operative,
+            ]);
+        }
+        
 
         return redirect()->route('createProjectMethod', $project['id']);
     } 

@@ -22,10 +22,10 @@ class Method extends Model
     }
 
     public function PPE() {
-        return $this->belongsToMany(MethodPpe::class);
+        return $this->belongsToMany(Ppe::class, 'method_ppes');
     }
 
     public function tool() {
-        return $this->belongsToMany(MethodTool::class);
+        return $this->belongsToMany(Tool::class, 'method_tools');
     }
 }

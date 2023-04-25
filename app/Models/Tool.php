@@ -18,6 +18,6 @@ class Tool extends Model
     }
 
     public function method() {
-        return $this->belongsToMany(MethodTool::class);
+        return $this->belongsToMany(Method::class, 'method_tools');
     }
 }

@@ -22,7 +22,7 @@ class Project extends Model
     }
 
     public function operative() {
-        return $this->belongsToMany(ProjectOperative::class);
+        return $this->belongsToMany(Operative::class, 'project_operatives');
     }
 
     public function detail() {
@@ -30,7 +30,7 @@ class Project extends Model
     }
 
     public function risk() {
-        return $this->belongsToMany(Risk::class);
+        return $this->belongsToMany(Risk::class, 'project_risks');
     }
 
     public function method() {
@@ -42,6 +42,6 @@ class Project extends Model
     }
  
     public function client() {
-        return $this->hasOne(Client::class);
+        return $this->belongsTo(Client::class);
     }
 }

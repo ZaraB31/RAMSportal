@@ -9,7 +9,7 @@
 
 <main>
     <div class="back">
-        <a href="/Admin"> <i class="fa-solid fa-arrow-left"></i> Back</a>
+        <a href="/"> <i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
 
     @include('includes.success')
@@ -67,6 +67,16 @@
                 <option value="{{$operative->id}}">{{$operative->name}}</option>
                 @endforeach
             </select>
+
+            <label for="operative_id">Project Operatives (Select all that apply)</label>
+            <div class="checkboxes">
+                @foreach($operatives as $operative)
+                <div>
+                    <input type="checkbox" name="operative_id[]" id="operative_id" value="{{ $operative->id }}">
+                    <label for="operative_id">{{$operative->name}}</label>
+                </div>
+                @endforeach
+            </div>
 
             <input type="submit" value="Next">
 

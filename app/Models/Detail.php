@@ -14,15 +14,15 @@ class Detail extends Model
     ];
 
     public function hospital() {
-        return $this->hasOne(Hospital::class);
+        return $this->belongsTo(Hospital::class);
     }
 
     public function supervisor() {
-        return $this->hasOne(Operative::class);
+        return $this->belongsTo(Operative::class);
     }
 
     public function manager() {
-        return $this->hasOne(Operative::class);
+        return $this->belongsTo(Operative::class);
     }
 
     public function project() {

@@ -13,11 +13,4 @@ class MethodTool extends Model
         'method_id', 'tool_id',  
     ];
 
-    public function method() {
-        return $this->hasMany(Method::class);
-    }
-
-    public function tool() {
-        return $this->hasMany(Tool::class);
-    }
 }

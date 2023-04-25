@@ -14,6 +14,6 @@ class Ppe extends Model
     ];
 
     public function method() {
-        return $this->belongsToMany(MethodPpe::class);
+        return $this->belongsToMany(Method::class, 'method_ppes');
     }
 } 

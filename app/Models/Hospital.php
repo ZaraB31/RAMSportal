@@ -14,6 +14,6 @@ class Hospital extends Model
     ];
 
     public function detail() {
-        return $this->belongsTo(Detail::class);
+        return $this->hasMany(Detail::class);
     }
 }

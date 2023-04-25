@@ -14,11 +14,11 @@ class Operative extends Model
     ];
 
     public function supervisor() {
-        return $this->belongsTo(Detail::class);
+        return $this->hasMany(Detail::class);
     }
 
     public function manager() {
-        return $this->belongsTo(Detail::class);
+        return $this->hasMany(Detail::class);
     }
 
     public function company() {
@@ -26,6 +26,6 @@ class Operative extends Model
     }
 
     public function project() {
-        return $this->belongsToMany(ProjectOperative::class);
+        return $this->belongsToMany(Project::class, 'project_oeratives');
     }
 }

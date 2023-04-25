@@ -13,11 +13,5 @@ class ProjectOperative extends Model
         'project_id', 'operative_id',
     ];
 
-    public function project() {
-        return $this->hasMany(Project::class);
-    }
-
-    public function operative() {
-        return $this->hasMany(Operative::class);
-    }
+    
 }

@@ -357,3 +357,7 @@ main .ppeDisplay div p {
   text-align: center;
   color: white;
 }
+main textarea#content {
+  border: none;
+  width: 100%;
+}
