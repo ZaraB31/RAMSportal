@@ -14,7 +14,7 @@ class Company extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function operative() {
@@ -22,6 +22,6 @@ class Company extends Model
     }
 
     public function project() {
-        return $this->belongsTo(Project::class);
+        return $this->hasMany(Project::class);
     }
 }

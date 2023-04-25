@@ -14,11 +14,11 @@ class Project extends Model
     ];
 
     public function user() {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function company() {
-        return $this->hasOne(Company::class);
+        return $this->belongsTo(Company::class);
     }
 
     public function operative() {
@@ -30,7 +30,7 @@ class Project extends Model
     }
 
     public function risk() {
-        return $this->belongsToMany(ProjectRisk::class);
+        return $this->belongsToMany(Risk::class);
     }
 
     public function method() {

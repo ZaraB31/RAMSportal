@@ -14,7 +14,7 @@ class Risk extends Model
     ];
 
     public function project() {
-        return $this->belongsToMany(ProjectRisk::class);
+        return $this->belongsToMany(Project::class);
     }
 
     public function person() {

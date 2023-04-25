@@ -13,7 +13,7 @@
             <input type="text" placeholder="Search">
         </form>
 
-        <button><a href="/Project/Details/Create">Add New</a></button>
+        <button><a href="/Project/Create/Details">Add New</a></button>
     </section>
 
     <section>
