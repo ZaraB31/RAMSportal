@@ -1,0 +1,153 @@
+@page {
+  margin: 100px 0;
+}
+body {
+  font-family: sans-serif;
+}
+
+header {
+  position: fixed;
+  top: -90px;
+  width: 90%;
+  padding: 0 5% 10px;
+  height: 80px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+header img {
+  width: 20%;
+  margin: 0 40% 10px;
+}
+header table {
+  width: 90%;
+  margin-left: 5%;
+  border-collapse: collapse;
+  border: none;
+}
+header table tr td {
+  font-size: 11px;
+}
+
+main {
+  width: 80%;
+  padding: 2% 10%;
+}
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  page-break-inside: initial;
+}
+main table tr td {
+  font-size: 14px;
+  padding: 8px 4px;
+}
+main table tr td img {
+  width: 100%;
+  text-align: center;
+}
+
+.ppe {
+  height: -moz-max-content;
+  height: max-content;
+  margin: 0 10px;
+  margin-bottom: 100px;
+  width: 125px;
+  float: left;
+}
+.ppe img {
+  width: 125px;
+}
+.ppe p {
+  background-color: #F6A21E;
+  text-align: center;
+  padding: 8px 4px;
+  width: 125px;
+  margin: 0;
+}
+
+table.operativesTable {
+  margin-bottom: 4%;
+}
+table.operativesTable tr td {
+  border: 1px solid black;
+  padding: 0;
+}
+table.operativesTable tr td ul {
+  list-style-type: none;
+}
+table.operativesTable tr td ul li {
+  padding: 10px 0;
+}
+
+.pageBreak {
+  page-break-after: always;
+}
+
+.methodTable {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  page-break-inside: avoid;
+}
+.methodTable tr th {
+  background-color: #F6A21E;
+  text-align: left;
+  border: solid #F6A21E;
+  border-width: 1px 1px 0 1px;
+  padding: 8px 4px;
+}
+.methodTable tr td {
+  border: 1px solid black;
+}
+.methodTable tr td img {
+  width: 100%;
+}
+.methodTable tr td ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.hazards .hazardsDisplay {
+  width: 100%;
+}
+.hazards .hazardsDisplay tr th, .hazards .hazardsDisplay tr td {
+  border: 1px solid black;
+}
+
+.hazardRatings {
+  margin-bottom: 4%;
+}
+.hazardRatings table {
+  text-align: left;
+  vertical-align: top;
+}
+.hazardRatings table tr td ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+.hazardRatings table table {
+  font-size: 12px;
+}
+.hazardRatings table table tr td {
+  padding: 0;
+}
+
+.frontPage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.frontPage img {
+  margin-top: 5%;
+}
+.frontPage div {
+  margin-top: 20%;
+}
+
+.register tr th, .register tr td {
+  border: 1px solid black;
+}
+.register tr td {
+  height: 25px;
+}

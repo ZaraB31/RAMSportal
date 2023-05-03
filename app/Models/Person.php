@@ -14,6 +14,6 @@ class Person extends Model
     ];
 
     public function risk() {
-        return $this->belongsTo(Risk::class);
+        return $this->hasMany(Risk::class);
     }
 }

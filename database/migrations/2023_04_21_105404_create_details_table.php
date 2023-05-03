@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->string('location');
             $table->date('start');
-            $table->string('duration');
+            $table->date('end');
             $table->string('workingHours');
             $table->foreignId('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
             $table->foreignId('supervisor_id')->references('id')->on('operatives')->onDelete('cascade');

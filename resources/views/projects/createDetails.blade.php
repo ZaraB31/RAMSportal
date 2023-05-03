@@ -38,7 +38,7 @@
             <label for="start">Start Date:</label>
             <input type="date" name="start" id="start">
             
-            <label for="duration">Duration of Works:</label>
+            <label for="duration">Duration of Works (weeks):</label>
             <input type="text" name="duration" id="duration">
 
             <label for="workingHours">Working Hours:</label>

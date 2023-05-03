@@ -18,7 +18,7 @@ class Risk extends Model
     }
 
     public function person() {
-        return $this->hasOne(Person::class);
+        return $this->belongsTo(Person::class);
     }
 
     public function section() {
