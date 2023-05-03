@@ -11,7 +11,7 @@ use PDF;
 
 class PDFController extends Controller
 {
-    public function generateRAMS($id) {
+    public function generateRAMS($id, $version) {
         $project = Project::findOrFail($id);
 
         $before = [];
@@ -38,7 +38,9 @@ class PDFController extends Controller
             'days' => $days,
         ];
 
-        $RAMS = PDF::loadView('pdfs/rams', $data);
+        $fileName = $project['title'] . ' - V' . $version . '.pdf';
+        $filePath = '../public/pdf/' . $fileName;
+        $RAMS = PDF::loadView('pdfs/rams', $data)->save($filePath);
 
         // return view('pdfs/rams', ['project' => $project, 
         //                     'before' => $before,
@@ -46,12 +48,7 @@ class PDFController extends Controller
         //                     'operatives' => $operatives,
         //                     'days' => $days,
         // ]);
-                            
-        return $RAMS->download('test.pdf');
-    }
-
-    public function generateDailyRA($id) {
-        $project = Project::findOrFail($id);
-
+        
+        return $fileName;
     }
 }

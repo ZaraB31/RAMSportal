@@ -195,6 +195,7 @@ form.fullPage .checkboxes {
   text-align: center;
   padding: 10px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .success ul {
   margin: 0;
@@ -360,4 +361,24 @@ main .ppeDisplay div p {
 main textarea#content {
   border: none;
   width: 100%;
+}
+main .halfSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+main .halfSection section {
+  width: 63%;
+}
+main .halfSection section h2 {
+  margin: 0;
+}
+main .halfSection aside {
+  width: 33%;
+  padding: 1%;
+  background-color: #F6A21E;
+}
+main .halfSection aside h2 {
+  margin: 0;
 }

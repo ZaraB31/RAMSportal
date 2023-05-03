@@ -44,4 +44,8 @@ class Project extends Model
     public function client() {
         return $this->belongsTo(Client::class);
     }
+
+    public function approval() {
+        return $this->hasOne(Approval::Class);
+    }
 }

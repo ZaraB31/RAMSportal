@@ -18,6 +18,7 @@ use App\Models\Sequence;
 use App\Models\Section;
 use App\Models\ProjectRisk;
 use App\Models\ProjectOperative;
+use App\Models\Ammendment;
 use Auth;
 
 class ProjectController extends Controller
@@ -181,7 +182,32 @@ class ProjectController extends Controller
 
     public function show($id) {
         $project = Project::findOrFail($id);
+        $userID = Auth::id();
+        $versions = Ammendment::where('project_id', $id)->get()->sortBy('version');
 
-        return view('projects/show', ['project' => $project]);
+        $risks = $project->risk()->get();
+
+        $before = [];
+        $after = [];
+
+        foreach($risks as $risk) {
+            $before[$risk['id']] = $risk['likelihood'] * $risk['severity'];
+            $after[$risk['id']] = $risk['residualLikelihood'] * $risk['residualSeverity'];
+        }
+
+        return view('projects/show', ['project' => $project,
+                                      'before' => $before,
+                                      'after' => $after,
+                                      'userID' => $userID,
+                                      'versions' => $versions]);
+    }
+
+    public function download($id, $version) {
+        $project = Project::findOrFail($id);
+        $fileVersion = Ammendment::where('project_id', $id)->where('version', $version)->first();
+
+        $filePath = public_path('/pdf/'.$fileVersion['fileName']);
+
+        return Response()->download($filePath);
     }
 }

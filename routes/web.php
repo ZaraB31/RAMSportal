@@ -23,6 +23,9 @@ Route::post('/Project/Create/Method', [App\Http\Controllers\ProjectController::c
 Route::get('/Project/Create/Risks/{id}', [App\Http\Controllers\ProjectController::class, 'createRisks'])->name('createProjectRisks');
 Route::post('/Project/Create/Risks', [App\Http\Controllers\ProjectController::class, 'storeRisks'])->name('storeProjectRisks');
 Route::get('/Project/{id}', [App\Http\Controllers\ProjectController::class, 'show'])->name('showProject');
+Route::post('/Project/{id}/Approve', [App\Http\Controllers\ApprovalController::class, 'approve'])->name('approveProject');
+Route::get('/Project/{id}/download/{version}', [App\Http\Controllers\ProjectController::class, 'download'])->name('downloadProject');
+
 Route::get('/generate-RAMS/{id}', [App\Http\Controllers\PDFController::class, 'generateRAMS']);
 Route::get('/generate-dailyRA/{id}', [App\Http\Controllers\PDFController::class, 'generateDailyRA']);
 

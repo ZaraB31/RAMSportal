@@ -333,7 +333,7 @@
                 <tr>
                     <td>Off Site Emergency Number</td>
                     <td>{{$project->company->name}}</td>
-                    <td>{{$project->company->phoneNo}}</td>
+                    <td>0{{$project->company->phoneNo}}</td>
                 </tr>
                 <tr>
                     <td>Out of Hours/24hr Emergency Number</td>

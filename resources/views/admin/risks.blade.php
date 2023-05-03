@@ -50,8 +50,6 @@
                     @elseif($after[$risk->id] >= 11)
                         <td style="background-color: #F6361E; border-bottom: 2px solid #D82009">{{$risk->residualLikelihood}} x {{$risk->residualSeverity}} = {{ $after[$risk->id] }}</td>
                     @endif
-                    
-
                 </tr>
                 @endforeach
             @else

@@ -124,4 +124,24 @@ main {
         border: none;
         width: 100%;
     }
+    .halfSection {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        section {
+            width: 63%;
+            h2 {
+                margin: 0;
+            }
+        }
+        aside {
+            width: 33%;
+            padding: 1%;
+            background-color: $yellow;
+            h2 {
+                margin: 0;
+            }
+        }
+    }
 }
