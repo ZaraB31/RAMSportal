@@ -20,6 +20,8 @@ use App\Models\Section;
 use App\Models\ProjectRisk;
 use App\Models\ProjectOperative;
 use App\Models\Ammendment;
+use App\Models\Qualification;
+use App\Models\ProjectQualification;
 use Auth;
 use DB;
 
@@ -40,10 +42,12 @@ class ProjectController extends Controller
         $clients = Client::all()->sortBy('name');
         $hospitals = Hospital::all()->sortBy('name');
         $operatives = Operative::all()->sortBy('name');
+        $qualifications = Qualification::all()->sortBy('name');
 
         return view('projects/createDetails', ['clients' => $clients,
                                                'hospitals' => $hospitals,
-                                               'operatives' => $operatives]);
+                                               'operatives' => $operatives,
+                                               'qualifications' => $qualifications]);
     }
 
     public function storeDetails(Request $request) {
@@ -101,6 +105,12 @@ class ProjectController extends Controller
             ]);
         }
         
+        foreach($request->get('qualifications') as $qualification) {
+            $projectQualification = ProjectQualification::create([
+                'project_id' => $project['id'],
+                'qualification_id' => $qualification,
+            ]);
+        } 
 
         return redirect()->route('createProjectMethod', $project['id']);
     } 
@@ -227,6 +237,13 @@ class ProjectController extends Controller
         $sequenceSteps = Sequence::where('method_id', $project->method['id'])->get()->sortBy('stepNo');
         $tools = Tool::all()->sortBy('name');
         $PPEs = Ppe::all()->sortBy('name');
+        $qualifications = Qualification::all()->sortBy('name');
+
+        $projectQualifications = ProjectQualification::where('project_id', $id)->get();
+        $proQualifications = [];
+        foreach($projectQualifications as $qualification) {
+            array_push($proQualifications, $qualification['qualification_id']);
+        }
 
         $methodPPEs = MethodPpe::where('method_id', $project->method['id'])->get();
         $projectPPEs = [];
@@ -257,7 +274,9 @@ class ProjectController extends Controller
                                              'projectTools',
                                              'projectOperatives',
                                              'sections',
-                                             'projectRisks'));
+                                             'projectRisks',
+                                             'qualifications', 
+                                             'proQualifications'));
     }
 
     public function update($id, Request $request) {
@@ -284,6 +303,14 @@ class ProjectController extends Controller
                 'operative_id' => $operative,
             ]);
         }
+
+        DB::table('project_qualifications')->where('project_id', $id)->delete();
+        foreach($request->get('qualifications') as $qualification) {
+            $projectQualification = ProjectQualification::create([
+                'project_id' => $project['id'],
+                'qualification_id' => $qualification,
+            ]);
+        } 
 
         $projectMethod = [
             'description' => $request['description'],

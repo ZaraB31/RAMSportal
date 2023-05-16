@@ -46,6 +46,15 @@
                 @endforeach
             @endif
             </p>
+            <p><b>Training Requirements: </b>
+                @if($project->qualification->count() === 0)
+                No Qualifications added
+                @else
+                @foreach($project->qualification as $qualification)
+                {{$qualification->name}},
+                @endforeach
+                @endif   
+            </p>
         </section>
 
         <aside>

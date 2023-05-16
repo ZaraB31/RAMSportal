@@ -14,6 +14,6 @@ class Qualification extends Model
     ];
 
     public function project() {
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class, 'project_qualifications');
     }
 }

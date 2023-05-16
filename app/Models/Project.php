@@ -50,6 +50,6 @@ class Project extends Model
     }
 
     public function qualification() {
-        return $this->belongsToMany(Qualification::class);
+        return $this->belongsToMany(Qualification::class, 'project_qualifications');
     }
 }

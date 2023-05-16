@@ -85,6 +85,21 @@
                 @endforeach
             </div>
 
+            <label for="qualifications">Training Requirements</label>
+            <div class="checkboxes">
+                @foreach($qualifications as $qualification)
+                <div>
+                    @if(in_array($qualification->id, $proQualifications))
+                    <input type="checkbox" name="qualifcations[]" id="qualifcation_id" value="{{$qualification->id}}" checked>
+                    <label for="qualifcation">{{$qualification->name}}</label>
+                    @else
+                    <input type="checkbox" name="qualifcations[]" id="qualifcation_id" value="{{$qualification->id}}">
+                    <label for="qualifcation">{{$qualification->name}}</label>
+                    @endif
+                </div>
+                @endforeach
+            </div>
+
             <h2 style="margin-top: 50px; border-top: 2px solid black; padding-top:20px;">Project Methods</h2>
 
             <label for="description">Project Description</label>

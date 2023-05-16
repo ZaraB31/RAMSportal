@@ -78,6 +78,16 @@
                 @endforeach
             </div>
 
+            <label for="qualifications">Training Requirements (select all that apply)</label>
+            <div class="checkboxes">
+                @foreach($qualifications as $qualification)
+                <div>
+                    <input type="checkbox" name="qualifications[]" id="qualification_id" value="{{$qualification->id}}">
+                    <label for="qualifications">{{$qualification->name}}</label>
+                </div>
+                @endforeach
+            </div>
+
             <input type="submit" value="Next">
 
         </form>
