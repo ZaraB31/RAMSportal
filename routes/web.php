@@ -42,6 +42,7 @@ Route::get('/Admin/Tools', [App\Http\Controllers\AdminController::class, 'tools'
 Route::get('/Admin/People', [App\Http\Controllers\AdminController::class, 'people'])->name('adminPeople');
 Route::get('/Admin/RiskTypes', [App\Http\Controllers\AdminController::class, 'riskTypes'])->name('adminRiskTypes');
 Route::get('/Admin/Risks', [App\Http\Controllers\AdminController::class, 'risks'])->name('adminRisks');
+Route::get('/Admin/Qualifications', [App\Http\Controllers\AdminController::class, 'qualifications'])->name('adminQualifications');
 
 Route::post('Admin/Companies/Create', [App\Http\Controllers\CompanyController::class, 'store'])->name('storeCompany');
 Route::post('Admin/Clients/Create', [App\Http\Controllers\ClientController::class, 'store'])->name('storeClient');
@@ -54,3 +55,4 @@ Route::post('Admin/People/Create', [App\Http\Controllers\PersonController::class
 Route::get('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'create'])->name('createRisk');
 Route::post('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'store'])->name('storeRisk');
 Route::post('Admin/RiskTypes/Create', [App\Http\Controllers\RiskTypeController::class, 'store'])->name('storeRiskType');
+Route::post('Admin/Qualifications/Create', [App\Http\Controllers\QualificationController::class, 'store'])->name('storeQualification');

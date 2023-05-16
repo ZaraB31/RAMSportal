@@ -48,4 +48,8 @@ class Project extends Model
     public function approval() {
         return $this->hasOne(Approval::Class);
     }
+
+    public function qualification() {
+        return $this->belongsToMany(Qualification::class);
+    }
 }

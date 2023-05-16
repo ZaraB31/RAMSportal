@@ -14,6 +14,7 @@ use App\Models\Tool;
 use App\Models\Person;
 use App\Models\RiskType;
 use App\Models\Risk;
+use App\Models\Qualification;
 
 class AdminController extends Controller
 {
@@ -115,5 +116,11 @@ class AdminController extends Controller
         return view('admin/risks', ['risks' => $risks, 
                                     'before' => $before,
                                     'after' => $after]);
+    }
+
+    public function qualifications() {
+        $qualifications = Qualification::all();
+
+        return view('admin/qualifications', ['qualifications' => $qualifications]);
     }
 }
