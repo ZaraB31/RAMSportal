@@ -7,15 +7,18 @@ use App\Models\Risk;
 use App\Models\Person;
 use App\Models\Section;
 use App\Models\RiskSection;
+use App\Models\RiskType;
 
 class RiskController extends Controller
 {
     public function create() {
         $people = Person::all();
         $sections = Section::where('type', 'risks')->get();
+        $types = RiskType::all()->sortBy('type');
 
         return view('admin/risksCreate', ['people' => $people,
-                                          'sections' => $sections]);
+                                          'sections' => $sections,
+                                          'types' => $types]);
     }
 
     public function store(Request $request) {

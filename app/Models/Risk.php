@@ -10,7 +10,7 @@ class Risk extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hazard', 'effect', 'likelihood', 'severity', 'control', 'residualLikelihood', 'residualSeverity', 'person_id',
+        'hazard', 'effect', 'likelihood', 'severity', 'control', 'residualLikelihood', 'residualSeverity', 'person_id', 'type_id',
     ];
 
     public function project() {
@@ -19,6 +19,10 @@ class Risk extends Model
 
     public function person() {
         return $this->belongsTo(Person::class);
+    }
+
+    public function type() {
+        return $this->belongsTo(RiskType::class);
     }
 
     public function section() {

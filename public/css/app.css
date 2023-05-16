@@ -42,6 +42,15 @@ button:hover {
   background-color: #D88809;
 }
 
+button.inverse {
+  background-color: #29292A;
+  width: 100%;
+  color: white;
+}
+button.inverse a {
+  font-weight: normal;
+}
+
 body {
   margin: 0;
 }

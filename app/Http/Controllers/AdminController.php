@@ -12,6 +12,7 @@ use App\Models\Ppe;
 use App\Models\Section;
 use App\Models\Tool;
 use App\Models\Person;
+use App\Models\RiskType;
 use App\Models\Risk;
 
 class AdminController extends Controller
@@ -92,6 +93,12 @@ class AdminController extends Controller
         $people = Person::all();
 
         return view('admin/people', ['people' => $people]);
+    }
+
+    public function riskTypes() {
+        $types = RiskType::all()->sortBy('type');
+
+        return view('admin/riskTypes', ['types' => $types]);
     }
 
     public function risks() {

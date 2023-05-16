@@ -11,6 +11,7 @@ use App\Models\Company;
 use App\Models\Detail;
 use App\Models\Ppe;
 use App\Models\Tool;
+use App\Models\Risk;
 use App\Models\Method;
 use App\Models\MethodPpe;
 use App\Models\MethodTool;
@@ -20,6 +21,7 @@ use App\Models\ProjectRisk;
 use App\Models\ProjectOperative;
 use App\Models\Ammendment;
 use Auth;
+use DB;
 
 class ProjectController extends Controller
 {
@@ -183,7 +185,7 @@ class ProjectController extends Controller
     public function show($id) {
         $project = Project::findOrFail($id);
         $userID = Auth::id();
-        $versions = Ammendment::where('project_id', $id)->get()->sortBy('version');
+        $versions = Ammendment::where('project_id', $id)->get()->sortByDesc('version');
 
         $risks = $project->risk()->get();
 
@@ -209,5 +211,143 @@ class ProjectController extends Controller
         $filePath = public_path('/pdf/'.$fileVersion['fileName']);
 
         return Response()->download($filePath);
+    }
+
+    public function edit($id) {
+        $project = Project::findOrFail($id);
+        $hospitals = Hospital::all();
+        $operatives = Operative::all()->sortBy('name');
+
+        $projectPeople = ProjectOperative::where('project_id', $id)->get();
+        $projectOperatives = [];
+        foreach($projectPeople as $projectPerson) {
+            array_push($projectOperatives, $projectPerson['operative_id']);
+        }
+
+        $sequenceSteps = Sequence::where('method_id', $project->method['id'])->get()->sortBy('stepNo');
+        $tools = Tool::all()->sortBy('name');
+        $PPEs = Ppe::all()->sortBy('name');
+
+        $methodPPEs = MethodPpe::where('method_id', $project->method['id'])->get();
+        $projectPPEs = [];
+        foreach($methodPPEs as $methodPPE) {
+            array_push($projectPPEs, $methodPPE['ppe_id']);
+        }
+
+        $methodTools = MethodTool::where('method_id', $project->method['id'])->get();
+        $projectTools = [];
+        foreach($methodTools as $methodTool) {
+            array_push($projectTools, $methodTool['tool_id']);
+        }
+        
+        $sections = Section::where('type', 'risks')->get();
+        $proRisks = ProjectRisk::where('project_id', $id)->get();
+        $projectRisks = [];
+        foreach($proRisks as $proRisk) {
+            array_push($projectRisks, $proRisk['risk_id']);
+        }
+
+        return view('projects/edit', compact('project', 
+                                             'hospitals',
+                                             'operatives',
+                                             'sequenceSteps',
+                                             'tools',
+                                             'PPEs',
+                                             'projectPPEs',
+                                             'projectTools',
+                                             'projectOperatives',
+                                             'sections',
+                                             'projectRisks'));
+    }
+
+    public function update($id, Request $request) {
+        $project = Project::findOrFail($id);
+
+        $project['jobNo'] = $request['jobNo'];
+        $project->update();
+
+        $projectDetails = [
+            'location' => $request['location'],
+            'start' => $request['start'],
+            'end' => $request['end'],
+            'workingHours' => $request['workingHours'],
+            'hospital_id' => $request['hospital_id'],
+            'supervisor_id' => $request['supervisor_id'],
+            'manager_id' => $request['manager_id'],
+        ];
+        $details = Detail::where('project_id', $id)->update($projectDetails);
+
+        DB::table('project_operatives')->where('project_id', $id)->delete();
+        foreach($request->get('operative') as $operative) {
+            $projectOperatives = ProjectOperative::create([
+                'project_id' => $id,
+                'operative_id' => $operative,
+            ]);
+        }
+
+        $projectMethod = [
+            'description' => $request['description'],
+        ];
+        $method = Method::where('project_id', $id)->first();
+        $method->update($projectMethod);
+
+        
+        DB::table('sequences')->where('method_id', $method['id'])->delete();
+        $sequenceSteps = $request->get('sequenceStep');
+        for($i = 0; $i < count($sequenceSteps); $i++) {
+            if($sequenceSteps[$i] !== null) {
+                $sequence = Sequence::create([
+                'stepNo' => $i+1,
+                'description' => $sequenceSteps[$i],
+                'method_id' => $method['id'],
+                ]);
+            }
+        }
+
+        DB::table('method_tools')->where('method_id', $method['id'])->delete();
+        foreach($request->get('tools') as $tool) {
+            $methodTools = MethodTool::create([
+                'method_id' => $method['id'],
+                'tool_id' => $tool,
+            ]);
+        }
+
+        DB::table('method_PPEs')->where('method_id', $method['id'])->delete();
+        foreach($request->get('PPEs') as $PPE) {
+            $methodPPEs = MethodPpe::create([
+                'method_id' => $method['id'],
+                'ppe_id' => $PPE,
+            ]);
+        }
+
+        DB::table('project_risks')->where('project_id', $id)->delete();
+        $risks = [];
+        foreach($request->get('projectRisks') as $riskID) {
+            array_push($risks, $riskID);
+        }
+        $risks = array_unique($risks);
+        foreach($risks as $risk) {
+            $projectRisk = ProjectRisk::create([
+                'project_id' => $id,
+                'risk_id' => $risk,
+            ]);
+        }
+
+        $ammendments = Ammendment::where('project_id', $id)->get();
+        $latestAmmendment = $ammendments->last();
+        $latestVersion = $latestAmmendment['version'] + 1;
+
+        $newAmmendment = Ammendment::create([
+            'project_id' => $id,
+            'version' => $latestVersion,
+            'comment' => $request['comment'],
+        ]);
+
+        $fileName = (new PDFController)->generateRAMS($id, $newAmmendment['version']);
+
+        $newAmmendment['fileName'] = $fileName;
+        $newAmmendment->save();
+
+        return redirect()->route('showProject', $id);
     }
 }

@@ -7,12 +7,18 @@ use App\Models\Project;
 use App\Models\ProjectRisk;
 use App\Models\Risk;
 use App\Models\ProjectOperative;
+use App\Models\RiskType;
+use App\Models\Ammendment;
 use PDF;
 
 class PDFController extends Controller
 {
     public function generateRAMS($id, $version) {
         $project = Project::findOrFail($id);
+        $types = [];
+
+        $ammendments = Ammendment::where('project_id', $id)->get();
+        $latestAmmendment = $ammendments->last();
 
         $before = [];
         $after = [];
@@ -20,6 +26,11 @@ class PDFController extends Controller
         foreach($project->risk as $risk) {
             $before[$risk['id']] = $risk['likelihood'] * $risk['severity'];
             $after[$risk['id']] = $risk['residualLikelihood'] * $risk['residualSeverity'];
+        }
+
+        foreach($project->risk as $risk) {
+            $type = $risk->type->type;
+            array_push($types, $type);
         }
 
         $projectOperatives = ProjectOperative::where('project_id', $id);
@@ -36,6 +47,8 @@ class PDFController extends Controller
             'after' => $after,
             'operatives' => $operatives,
             'days' => $days,
+            'types' => $types,
+            'latestAmmendment' => $latestAmmendment,
         ];
 
         $fileName = $project['title'] . ' - V' . $version . '.pdf';
@@ -47,6 +60,8 @@ class PDFController extends Controller
         //                     'after' => $after,
         //                     'operatives' => $operatives,
         //                     'days' => $days,
+        //                     'types' => $types,
+        //                     'latestAmmendment' => $latestAmmendment,
         // ]);
         
         return $fileName;

@@ -44,7 +44,14 @@ button:hover {
     cursor: pointer;
     background-color: $yellowHover;
 }
-
+button.inverse {
+    background-color: #29292A;
+    width: 100%;
+    color: white;
+    a {
+        font-weight: normal;
+    }
+}
 
 body {
     margin: 0;

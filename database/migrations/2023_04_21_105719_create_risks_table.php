@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('residualLikelihood');
             $table->integer('residualSeverity');
             $table->foreignId('person_id')->references('id')->on('people')->onDelete('cascade');
+            $table->foreignId('type_id')->references('id')->on('risk_types')->onDelete('cascade');
             $table->timestamps();
         });
     }

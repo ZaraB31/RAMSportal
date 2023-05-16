@@ -71,6 +71,8 @@
                     <li><a href="/Project/{{$project->id}}/download/{{$version->version}}">Version {{$version->version}} - {{$version->fileName}} <i class="fa-solid fa-download"></i></a></li>
                     @endforeach
                 </ul>
+
+                <button class="inverse"><a href="/Project/{{$project->id}}/Edit">Update Project</a></button>
             @endif
 
             
@@ -130,9 +132,7 @@
             </tr>
             @endforeach
         </table>
-        
     </section>
-
 </main>
 
 @endsection

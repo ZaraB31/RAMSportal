@@ -22,6 +22,7 @@
             <tr><td><a href="/Admin/Sections">Sections <i class="fa-solid fa-arrow-right"></i></a></td></tr>
             <tr><td><a href="/Admin/Tools">Tools <i class="fa-solid fa-arrow-right"></i></a></td></tr>
             <tr><td><a href="/Admin/People">People <i class="fa-solid fa-arrow-right"></i></a></td></tr>
+            <tr><td><a href="/Admin/RiskTypes">Risk Types <i class="fa-solid fa-arrow-right"></i></a></td></tr>
             <tr><td><a href="/Admin/Risks">Risks <i class="fa-solid fa-arrow-right"></i></a></td></tr>
         </table>
     </section>

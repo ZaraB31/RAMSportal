@@ -22,7 +22,7 @@ class ApprovalController extends Controller
         $ammendment = Ammendment::create([
             'project_id' => $id,
             'version' => 1,
-            'comment' => 'Initial Version',
+            'comment' => 'Issued to site',
         ]);
 
         $fileName = (new PDFController)->generateRAMS($id, $ammendment['version']);

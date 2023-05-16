@@ -24,6 +24,14 @@
         <label for="effect">Effect:</label>
         <input type="text" name="effect" id="effect">
 
+        <label for="type_id">Risk Type:</label>
+        <select name="type_id" id="type_id">
+            <option value="">Select...</option>
+            @foreach($types as $type)
+            <option value="{{$type->id}}">{{$type->type}}</option>
+            @endforeach
+        </select>
+
         <label for="likelihood">Likelihood:</label>
         <select name="likelihood" id="likelihood">
             <option value="">Select...</option>

@@ -17,6 +17,25 @@
             <p>Tel: {{$project->company->phoneNo}}</p>
             <p>Email: {{$project->user->email}}</p>
         </div>
+
+        <table>
+            <tr style="background-color: lightgrey;">
+                <th>Date of Issue</th>
+                <th>Ref No.</th>
+                <th>Authorised By</th>
+                <th>Revision No'</th>
+            </tr>
+            <tr>
+                @if($latestAmmendment->version === '1')
+                <td>{{date('jS F Y', strtotime($project->approval->created_at))}}</td>
+                @else
+                <td>{{date('jS F Y', strtotime($latestAmmendment->created_at))}}</td>
+                @endif
+                <td>{{$project->jobNo}}</td>
+                <td>{{$project->approval->user->name}}</td>
+                <td>{{$latestAmmendment->version}}</td>
+            </tr>
+        </table>
     </section>
 
     <header>
@@ -40,11 +59,11 @@
         <table>
             <tr><td style="width:40%;"><b>Location:</b></td><td>{{$project->detail->location}}</td></tr>
             <tr><td style="width:40%;"><b>Project Title:</b></td><td>{{$project->title}}</td></tr>
-            <tr><td style="width:40%;"><b>Issue Number:</b></td><td>01</td></tr>
+            <tr><td style="width:40%;"><b>Issue Number:</b></td><td>{{$latestAmmendment->version}}</td></tr>
             <tr><td style="width:40%;"><b>Compiled by:</b></td><td>{{$project->user->name}}</td></tr>
             <tr><td style="width:40%;"><b>Company Position:</b></td><td>{{$project->user->position}}</td></tr>
             <tr><td style="width:40%;"><b>Date Compiled:</b></td><td>{{date('jS F Y', strtotime($project->created_at))}}</td></tr>
-            <tr><td style="width:40%;"><b>Date Issued:</b></td><td>approved created at</td></tr>
+            <tr><td style="width:40%;"><b>Date Issued:</b></td><td>{{date('jS F Y', strtotime($project->approval->created_at))}}</td></tr>
         </table>
 
         <section class="pageBreak">
@@ -93,7 +112,7 @@
         </section>
 
         <section class="pageBreak">
-            <h2>Risk Assessment and Method Statement</h2>
+            <h2>Method Statement</h2>
 
             <table class="methodTable">
                 <tr>
@@ -344,6 +363,7 @@
         </section>
 
         <section class="hazardRatings">
+            <h2>Risk Assessment</h2>
             <table>
                 <tr>
                     <td style="width:25%;">
@@ -501,8 +521,44 @@
             </table>
         </section>
 
-        <section>
+        @for($x=0; $x<$days+1; $x++)
+        <section class="pageBreak">
+            <h2>Daily Risk Assessment</h2>
+            <p style="border-bottom:1px solid black">Date:</p>
+            <p>This Daily Risk Assessment is not a replacement for the Risk Assessment and Method Statements (RAMS) for the project, but to support the RAMS continue to be effective 
+                at controlling risks on the day of activities to support further hazard and risks are eliminated prior to work commencing.</p>
+            
+            <table class="methodTable">
+                <tr style="text-align:center; font-size:14px;">
+                    <th style="text-align:center;">ARE THERE ANY RESIDUAL RISKS FROM THE FOLLOWING HAZARDS?</th>
+                    <th style="text-align:center; width:5%;">TICK IF APPLIES</th>
+                    <th style="text-align:center;">WHAT CONTROL MEASURES HAVE YOU/ARE YOU GOING TO TAKEN/TAKE?</th>
+                    <th style="text-align:center;" colspan="3">RESIDUAL RISK (CIRCLE LEVEL AFTER CONTROL MEASURES TAKEN)</th>
+                </tr>
+                @foreach($types as $type)
+                <tr>
+                    <td style="width:30%; padding:15px 5px;">{{$type}}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="width:7%; text-align:center; background-color: #F6361E;">HIGH</td>
+                    <td style="width:7%; text-align:center; background-color: #F6A21E;">MID</td>
+                    <td style="width:7%; text-align:center; background-color: #08bf1c;">LOW</td>
+                </tr>
+                @endforeach
+                <tr>
+                    <td style="background-color:lightgrey; text-align:center;" colspan="6">I confirm that the general safety on this job has been maintained and agree to proceed with the job/task safely</td>
+                </tr>
+                <tr>
+                    <td style="padding:15px 5px" colspan="2">Name:</td>
+                    <td style="padding:15px 5px" colspan="4">Signature:</td>
+                </tr>
+            </table>
+        </section>
+        @endfor
+
+        <section class="pageBreak">
             <h2>Risk Assessment and Method Statement Register</h2>
+            <p>This register is to be signed by all operatives at the start of each working day.</p>
             <p style="color:red;">I confirm that I have read and understood these risk assessments, method statements and emergency procedures and commit to working safely and abide by all the company and client requirements.</p>
             <table class="methodTable register">
                 <tr>
@@ -510,13 +566,34 @@
                     <th>Name</th>
                     <th>Signature</th>
                 </tr>
-                @for($i=0; $i<$operatives+2; $i++)
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                @for($x=0; $x<$days+1; $x++)
+                    @for($i=0; $i<$operatives+2; $i++)
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    @endfor
                 @endfor
+            </table>
+        </section>
+
+        <section>
+            <h2>Document Revisions</h2>
+
+            <table class="methodTable">
+                <tr>
+                    <th style="width:20%">Version No'</th>
+                    <th style="width:60%">Comments</th>
+                    <th style="width:20%">Date</th>
+                </tr>
+                @foreach($project->ammendment as $ammendment)
+                <tr>
+                    <td>{{$ammendment->version}}</td>
+                    <td>{{$ammendment->comment}}</td>
+                    <td>{{date('jS F Y', strtotime($ammendment->created_at))}}</td>
+                </tr>
+                @endforeach
             </table>
         </section>
     </main>

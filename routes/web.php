@@ -23,11 +23,12 @@ Route::post('/Project/Create/Method', [App\Http\Controllers\ProjectController::c
 Route::get('/Project/Create/Risks/{id}', [App\Http\Controllers\ProjectController::class, 'createRisks'])->name('createProjectRisks');
 Route::post('/Project/Create/Risks', [App\Http\Controllers\ProjectController::class, 'storeRisks'])->name('storeProjectRisks');
 Route::get('/Project/{id}', [App\Http\Controllers\ProjectController::class, 'show'])->name('showProject');
+Route::get('/Project/{id}/Edit', [App\Http\Controllers\ProjectController::class, 'edit'])->name('editProject');
+Route::post('/Project/{id}/Update', [App\Http\Controllers\ProjectController::class, 'update'])->name('updateProject');
 Route::post('/Project/{id}/Approve', [App\Http\Controllers\ApprovalController::class, 'approve'])->name('approveProject');
 Route::get('/Project/{id}/download/{version}', [App\Http\Controllers\ProjectController::class, 'download'])->name('downloadProject');
 
-Route::get('/generate-RAMS/{id}', [App\Http\Controllers\PDFController::class, 'generateRAMS']);
-Route::get('/generate-dailyRA/{id}', [App\Http\Controllers\PDFController::class, 'generateDailyRA']);
+Route::get('/generate-RAMS/{id}', [App\Http\Controllers\PDFController::class, 'download']);
 
 Route::get('/Admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 Route::get('/Admin/Companies', [App\Http\Controllers\AdminController::class, 'companies'])->name('adminCompanies');
@@ -39,6 +40,7 @@ Route::get('/Admin/PPE', [App\Http\Controllers\AdminController::class, 'PPEs'])-
 Route::get('/Admin/Sections', [App\Http\Controllers\AdminController::class, 'sections'])->name('adminSections');
 Route::get('/Admin/Tools', [App\Http\Controllers\AdminController::class, 'tools'])->name('adminTools');
 Route::get('/Admin/People', [App\Http\Controllers\AdminController::class, 'people'])->name('adminPeople');
+Route::get('/Admin/RiskTypes', [App\Http\Controllers\AdminController::class, 'riskTypes'])->name('adminRiskTypes');
 Route::get('/Admin/Risks', [App\Http\Controllers\AdminController::class, 'risks'])->name('adminRisks');
 
 Route::post('Admin/Companies/Create', [App\Http\Controllers\CompanyController::class, 'store'])->name('storeCompany');
@@ -51,3 +53,4 @@ Route::post('Admin/Tools/Create', [App\Http\Controllers\ToolController::class, '
 Route::post('Admin/People/Create', [App\Http\Controllers\PersonController::class, 'store'])->name('storePerson');
 Route::get('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'create'])->name('createRisk');
 Route::post('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'store'])->name('storeRisk');
+Route::post('Admin/RiskTypes/Create', [App\Http\Controllers\RiskTypeController::class, 'store'])->name('storeRiskType');
