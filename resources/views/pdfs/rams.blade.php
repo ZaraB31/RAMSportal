@@ -208,8 +208,9 @@
                 <tr>
                     <td>
                         <ul>
-                            <li>CSCS accreditation</li>
-                            <li>JIB cards</li>
+                            @foreach($project->qualification as $qualification)
+                            <li>{{$qualification->name}}</li>
+                            @endforeach
                         </ul>
                     </td>
                 </tr>
@@ -222,7 +223,7 @@
                 <tr>
                     <td>
                         <ul>
-                            <li>the Site Supervisor / Foreman will manage the site activities on a daily basis 
+                            <li>The Site Supervisor / Foreman will manage the site activities on a daily basis 
                                 and their responsibility is to control the working area and interface the company 
                                 activities with the client.</li>
                             <li>Site Emergency procedures must be strictly adhered with and all site rules will apply.</li>
@@ -357,7 +358,7 @@
                 <tr>
                     <td>Out of Hours/24hr Emergency Number</td>
                     <td>{{$project->company->name}}</td>
-                    <td>07867512180</td>
+                    <td>0{{$project->detail->emergencyPhone}}</td>
                 </tr>
             </table>
         </section>

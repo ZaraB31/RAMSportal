@@ -68,6 +68,9 @@
                 @endforeach
             </select>
 
+            <label for="emergencyPhone">Out of hours phone number:</label>
+            <input type="text" name="emergencyPhone" id="emergencyPhone" value="0{{$project->detail->emergencyPhone}}">
+
             <label for="operatives">Project Operatives</label>
             <div class="checkboxes">
                 @foreach($operatives as $operative)
@@ -90,10 +93,10 @@
                 @foreach($qualifications as $qualification)
                 <div>
                     @if(in_array($qualification->id, $proQualifications))
-                    <input type="checkbox" name="qualifcations[]" id="qualifcation_id" value="{{$qualification->id}}" checked>
+                    <input type="checkbox" name="qualification[]" id="qualifcation_id" value="{{$qualification->id}}" checked>
                     <label for="qualifcation">{{$qualification->name}}</label>
                     @else
-                    <input type="checkbox" name="qualifcations[]" id="qualifcation_id" value="{{$qualification->id}}">
+                    <input type="checkbox" name="qualification[]" id="qualifcation_id" value="{{$qualification->id}}">
                     <label for="qualifcation">{{$qualification->name}}</label>
                     @endif
                 </div>

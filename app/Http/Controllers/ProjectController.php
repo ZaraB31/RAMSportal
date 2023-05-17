@@ -59,6 +59,7 @@ class ProjectController extends Controller
             'start' => ['required', 'after_or_equal:today'],
             'duration' => ['required'],
             'workingHours' => ['required'],
+            'emergencyPhone' => ['required', 'numeric', 'digits:11'],
             'hospital_id' => ['required'],
             'supervisor_id' => ['required'],
             'manager_id' => ['required'],
@@ -71,6 +72,9 @@ class ProjectController extends Controller
             'start.after_or_equal' => 'The project start date must not be in the past',
             'duration.required' => 'The project duration is requried',
             'workingHours.required' => 'The project working hours are required',
+            'emergencyPhone.required' => 'An emergency phone number is required',
+            'emergencyPhone.numeric' => 'The emergency phone number must only be numeric values',
+            'emergencyPhone.digits' => 'The emergency phone number must be 11 numbers in length',
             'hospital_id.required' => 'The nearest A&E to the project site is requried',
             'supervisor_id.requried' => 'The project supervisor is requried',
             'manager_id.requried' => 'The project manager is requried',
@@ -305,7 +309,7 @@ class ProjectController extends Controller
         }
 
         DB::table('project_qualifications')->where('project_id', $id)->delete();
-        foreach($request->get('qualifications') as $qualification) {
+        foreach($request->get('qualification') as $qualification) {
             $projectQualification = ProjectQualification::create([
                 'project_id' => $project['id'],
                 'qualification_id' => $qualification,
@@ -375,6 +379,6 @@ class ProjectController extends Controller
         $newAmmendment['fileName'] = $fileName;
         $newAmmendment->save();
 
-        return redirect()->route('showProject', $id);
+        return redirect()->route('showProject', $id)->with('success', 'Project Updated!');
     }
 }

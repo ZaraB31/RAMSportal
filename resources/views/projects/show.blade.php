@@ -37,6 +37,7 @@
             <p><b>Nearest A&E: </b>{{$project->detail->hospital->name}} - {{$project->detail->hospital->address}}</p>
             <p><b>Site Manager: </b>{{$project->detail->manager->name}}</p>
             <p><b>Site Supervisor: </b>{{$project->detail->supervisor->name}}</p>
+            <p><b>Out of hours phone number: </b>0{{$project->detail->emergencyPhone}}</p>
             <p><b>Site Operatives: </b>
             @if($project->operative->count() === 0)
                 No Operatives Added 

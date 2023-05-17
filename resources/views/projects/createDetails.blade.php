@@ -68,6 +68,9 @@
                 @endforeach
             </select>
 
+            <label for="emergencyPhone">Out of hours phone number:</label>
+            <input type="text" name="emergencyPhone" id="emergencyPhone">
+
             <label for="operative_id">Project Operatives (Select all that apply)</label>
             <div class="checkboxes">
                 @foreach($operatives as $operative)

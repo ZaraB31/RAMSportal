@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('start');
             $table->date('end');
             $table->string('workingHours');
+            $table->integer('emergencyPhone');
             $table->foreignId('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
             $table->foreignId('supervisor_id')->references('id')->on('operatives')->onDelete('cascade');
             $table->foreignId('manager_id')->references('id')->on('operatives')->onDelete('cascade');
