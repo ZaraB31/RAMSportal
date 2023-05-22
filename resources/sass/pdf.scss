@@ -112,9 +112,12 @@ table.operativesTable {
 .hazards {
     .hazardsDisplay {
         width: 100%;
+        table-layout: fixed;
         tr {
             th, td {
                 border: 1px solid black;
+                text-align: center;
+                word-wrap: break-word;
             }
         }
     }
@@ -171,5 +174,11 @@ table.operativesTable {
         td {
             height: 25px;
         }
+    }
+}
+.dailyRA {
+    table {
+        margin-top: 0;
+        page-break-inside: auto;
     }
 }

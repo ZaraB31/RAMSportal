@@ -16,11 +16,11 @@
 
             <table>
                 @foreach($sections as $section)
-                <tr>
-                    <th style="width:10px; padding-right:5px;"><input type="checkbox" name="sectionTitle[]" id="{{$section->id}}"></th>
-                    <th>{{$section->name}}</th>
+                <tr onClick="openTable('{{$section->name}}')" class="riskTitle" id="{{$section->name}}">
+                    <th style="width:10px; padding-right:5px; border-bottom: 2px solid #F6A21E;"><input type="checkbox" name="sectionTitle[]" id="{{$section->id}}"></th>
+                    <th style="border-bottom: 2px solid #F6A21E;">{{$section->name}} <i style="margin-left:8px" class="fa-solid fa-chevron-down"></i></th>
                     @foreach($section->risk as $risk)
-                    <tr>
+                    <tr class="risk {{$section->name}}" style="display:none;">
                         <td style="width:10px; padding-right:5px;"><input type="checkbox" name="projectRisks[]" id="sectionTask_id"  class="{{$section->id}}" value="{{$risk->id}}"></td>
                         <td>{{$risk->hazard}}</td>
                     </tr>
@@ -30,7 +30,7 @@
             </table>
 
             <input type="text" name="project_id" id="project_id" value="{{$project->id}}" style="display:none;">
-            <input type="submit" value="Finish">
+            <input style="margin-bottom: 20px;" type="submit" value="Finish">
         </form>
     </section>
 </main>
@@ -52,6 +52,19 @@
             });
         };
     });
+</script>
+
+<script type="application/javascript">
+    function openTable(sectionID) {
+        risks = document.getElementsByClassName(sectionID);
+        for(i=0; i<risks.length; i++) {
+            if(risks[i].style.display === 'none') {
+                risks[i].style.display = 'table-row';
+            } else if(risks[i].style.display === 'table-row') {
+                risks[i].style.display = 'none';
+            }
+        }
+    }
 </script>
 
 @endsection

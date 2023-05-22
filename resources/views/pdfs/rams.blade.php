@@ -14,7 +14,7 @@
 
         <div>
             <p>{{$project->company->address}}</p>
-            <p>Tel: {{$project->company->phoneNo}}</p>
+            <p>Tel: 0{{$project->company->phoneNo}}</p>
             <p>Email: {{$project->user->email}}</p>
         </div>
 
@@ -159,7 +159,7 @@
                     <td>
                         <ul>
                             <li>All employees, contractors and visitors will attend the site induction carried out by the supervisor responsible for the site.</li>
-                            <li>All employees, contractors and visitors will register their presence within the daily site reqister.</li>
+                            <li>All employees, contractors and visitors will register their presence within the daily site register.</li>
                             <li>All persons will comply with site rules in the wearing of personal protective equipment.</li>
                         </ul>
                     </td>
@@ -328,7 +328,7 @@
                                 the Toolbox Talk procedures prior to commencing work.</li>
                             <li>They must ensure they fully understand the work involved, the hazards and the level of risk they may be exposed to.</li>
                             <li>Following instruction, they each must sign the register attached.</li>
-                            <li>Each operative must work to the method statement, any deviation must be authorised by mega Electrical NW Ltd 
+                            <li>Each operative must work to the method statement, any deviation must be authorised by the Mega Electrical NW Ltd 
                                 site supervisor.</li>
                         </ul>
                         <b>Any operative not working to the specific method statement will be subject to disciplinary action.</b>
@@ -410,20 +410,20 @@
         <section class="hazards pageBreak">
             <table class="hazardsDisplay">
                 <tr>
-                    <th rowspan="2">Hazard</th>
-                    <th rowspan="2">Effect</th>
-                    <th rowspan="2">Persons at Risk</th>
+                    <th style="width:15%" rowspan="2">Hazard</th>
+                    <th style="width:15%" rowspan="2">Effect</th>
+                    <th style="width:15%" rowspan="2">Persons at Risk</th>
                     <th colspan="3">Risk</th>
-                    <th rowspan="2">Control Measures</th>
+                    <th style="width:31%" rowspan="2">Control Measures</th>
                     <th colspan="3">Residual Risk</th>
                 </tr>
                 <tr>
-                    <th>L</th>
-                    <th>S</th>
-                    <th>L*S</th>
-                    <th>L</th>
-                    <th>S</th>
-                    <th>L*S</th>
+                    <th style="width:3.5%">L</th>
+                    <th style="width:3.5%">S</th>
+                    <th style="width:5%">L*S</th>
+                    <th style="width:3.5%">L</th>
+                    <th style="width:3.5%">S</th>
+                    <th style="width:5%">L*S</th>
                 </tr>
                 @foreach($project->risk as $risk)
                 <tr>
@@ -441,7 +441,7 @@
                         <td style="text-align:center; background-color: #F6361E;">{{ $before[$risk->id] }}</td>
                     @endif
 
-                    <td>{{$risk->control}}</td>
+                    <td style="text-align:left;">{{$risk->control}}</td>
                     <td>{{$risk->residualLikelihood}}</td>
                     <td>{{$risk->residualSeverity}}</td>
 
@@ -523,12 +523,14 @@
         </section>
 
         @for($x=0; $x<$days+1; $x++)
-        <section class="pageBreak">
+        <section>
             <h2>Daily Risk Assessment</h2>
             <p style="border-bottom:1px solid black">Date:</p>
             <p>This Daily Risk Assessment is not a replacement for the Risk Assessment and Method Statements (RAMS) for the project, but to support the RAMS continue to be effective 
                 at controlling risks on the day of activities to support further hazard and risks are eliminated prior to work commencing.</p>
-            
+        </section>
+        
+        <section class="pageBreak dailyRA">
             <table class="methodTable">
                 <tr style="text-align:center; font-size:14px;">
                     <th style="text-align:center;">ARE THERE ANY RESIDUAL RISKS FROM THE FOLLOWING HAZARDS?</th>

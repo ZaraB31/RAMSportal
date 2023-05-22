@@ -109,9 +109,12 @@ table.operativesTable tr td ul li {
 
 .hazards .hazardsDisplay {
   width: 100%;
+  table-layout: fixed;
 }
 .hazards .hazardsDisplay tr th, .hazards .hazardsDisplay tr td {
   border: 1px solid black;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .hazardRatings {
@@ -157,4 +160,9 @@ table.operativesTable tr td ul li {
 }
 .register tr td {
   height: 25px;
+}
+
+.dailyRA table {
+  margin-top: 0;
+  page-break-inside: auto;
 }

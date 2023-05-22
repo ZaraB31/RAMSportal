@@ -71,7 +71,7 @@
             <label for="emergencyPhone">Out of hours phone number:</label>
             <input type="text" name="emergencyPhone" id="emergencyPhone">
 
-            <label for="operative_id">Project Operatives (Select all that apply)</label>
+            <label for="operative_id">Project Operatives (Select all that apply, this should include the Site Manager and Site Supervisor)</label>
             <div class="checkboxes">
                 @foreach($operatives as $operative)
                 <div>

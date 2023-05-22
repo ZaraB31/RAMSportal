@@ -18,7 +18,7 @@
         <article>
             <table>
                 <tr>
-                    <th>Type</th>
+                    <th>Risk Types</th>
                 </tr>
                 @if($types->count() > 0)
                     @foreach($types as $type)

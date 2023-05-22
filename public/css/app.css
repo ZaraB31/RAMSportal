@@ -391,3 +391,13 @@ main .halfSection aside {
 main .halfSection aside h2 {
   margin: 0;
 }
+main .riskTitle {
+  background-color: #F6A21E;
+}
+main .riskTitle td {
+  border-bottom: 1px solid black;
+}
+main .riskTitle:hover {
+  background-color: #D88809;
+  cursor: pointer;
+}

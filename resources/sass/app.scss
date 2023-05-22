@@ -144,4 +144,15 @@ main {
             }
         }
     }
+    .riskTitle {
+        background-color: $yellow;
+        td {
+            border-bottom: 1px solid black;
+        }
+        
+    }
+    .riskTitle:hover {
+        background-color: $yellowHover;
+        cursor: pointer;
+    }
 }

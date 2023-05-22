@@ -13,7 +13,7 @@ class RiskController extends Controller
 {
     public function create() {
         $people = Person::all();
-        $sections = Section::where('type', 'risks')->get();
+        $sections = Section::where('type', 'risks')->get()->sortBy('name');
         $types = RiskType::all()->sortBy('type');
 
         return view('admin/risksCreate', ['people' => $people,
@@ -31,6 +31,7 @@ class RiskController extends Controller
             'residualLikelihood' => ['required'],
             'residualSeverity' => ['required'],
             'person_id' => ['required'],
+            'type_id' => ['required'],
         ], [
             'hazard.required' => 'The risk hazard is required',
             'effect.required' => 'The risk effect is required',
@@ -40,6 +41,7 @@ class RiskController extends Controller
             'residualLikelihood.required' => 'The risk residual likelihood is required',
             'residualSeverity.required' => 'The risk residual severity is required',
             'person_id.required' => 'The people at risk field is required',
+            'type_id.required' => 'The risk type is required',
         ]);
 
         $risk = Risk::create([
@@ -51,6 +53,7 @@ class RiskController extends Controller
             'control' => $request['control'],
             'residualLikelihood' => $request['residualLikelihood'],
             'residualSeverity' => $request['residualSeverity'],
+            'type_id' => $request['type_id'],
         ]);
 
         foreach($request->get('sections') as $sectionID) {

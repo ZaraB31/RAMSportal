@@ -32,6 +32,7 @@ class PDFController extends Controller
             $type = $risk->type->type;
             array_push($types, $type);
         }
+        $types = array_unique($types);
 
         $projectOperatives = ProjectOperative::where('project_id', $id);
         $operatives = $projectOperatives->count();

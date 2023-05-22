@@ -16,19 +16,24 @@
 
     <section class="twoThirds">
 
-        <article class="ppeDisplay">
-            @if($PPEs->count() > 0)
-                @foreach($PPEs as $PPE)
-                <div>
-                    <img src="/PPE/{{$PPE->icon}}" alt="{{$PPE->name}}">
-                    <p>{{$PPE->name}}</p>
-                </div>
-                @endforeach
-            @else
-            <div class="card">
-                <h3>No PPE added</h3>
-            </div>
-            @endif
+        <article>
+            <table>
+                <tr>
+                    <th>PPE</th>
+                </tr>
+                @if($PPEs->count() > 0)
+                    @foreach($PPEs as $PPE)
+                    <tr>
+                        <td>{{$PPE->name}}</td>
+                    </tr>
+                    @endforeach
+                @else
+                <tr>
+                    <td>No PPE added</td>
+                </tr>
+                @endif
+            </table>
+            
         </article>
 
         <aside>
@@ -39,9 +44,6 @@
 
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name">
-
-                <label for="icon">Icon:</label>
-                <input type="file" name="icon" id="icon">
 
                 <input type="submit" value="Save" class="inverse">
             </form>

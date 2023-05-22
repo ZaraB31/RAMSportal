@@ -77,7 +77,7 @@ class AdminController extends Controller
     }
 
     public function sections() {
-        $sections = Section::all()->sortBy('name');
+        $sections = Section::all()->sortBy('type');
 
         return view('admin/sections', ['sections' => $sections]);
     }
@@ -103,6 +103,7 @@ class AdminController extends Controller
     }
 
     public function risks() {
+        $sections = Section::where('type', 'risks')->get();
         $risks = Risk::all();
 
         $before = [];
@@ -113,7 +114,8 @@ class AdminController extends Controller
             $after[$risk['id']] = $risk['residualLikelihood'] * $risk['residualSeverity'];
         }
 
-        return view('admin/risks', ['risks' => $risks, 
+        return view('admin/risks', ['risks' => $risks,
+                                    'sections' => $sections, 
                                     'before' => $before,
                                     'after' => $after]);
     }
