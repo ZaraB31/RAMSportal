@@ -33,8 +33,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index() {
         return view('admin/dashboard');
     }
 
@@ -60,8 +59,11 @@ class AdminController extends Controller
     public function operatives() {
         $operatives = Operative::all()->sortBy('name');
         $companies = Company::all();
+        $qualifications = Qualification::all();
 
-        return view('admin/operatives', ['operatives' => $operatives, 'companies' => $companies]);
+        return view('admin/operatives', ['operatives' => $operatives, 
+                                         'companies' => $companies,
+                                         'qualifications' => $qualifications]);
     }
 
     public function hospitals() {

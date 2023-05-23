@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Operative;
+use App\Models\OperativeQualification;
 
 class OperativeController extends Controller
 {
@@ -35,6 +36,13 @@ class OperativeController extends Controller
                                         'position' => $request['position'], 
                                         'profilePic' => $profileName,
                                         'company_id' => $request['company_id']]);
+
+        foreach($request->get('qualification_id') as $qualification) {
+            $operativeQualification = OperativeQualification::create([
+                'operative_id' => $operative['id'],
+                'qualification_id' => $qualification,
+            ]);
+        }
 
         return redirect()->route('adminOperatives')->with('success', 'Operative Added!');
     }

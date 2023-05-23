@@ -161,22 +161,6 @@ form.fullPage .sequence .add {
   left: 99%;
   z-index: 1;
 }
-form.fullPage div {
-  margin: 5px 0;
-  width: 30%;
-  display: flex;
-  align-items: center;
-}
-form.fullPage div input[type=checkbox] {
-  margin: 5px;
-  margin-right: 10px;
-}
-form.fullPage .checkboxes {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-}
 
 .back {
   margin-top: 20px;

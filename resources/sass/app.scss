@@ -65,6 +65,9 @@ main {
                 margin-top: 0;
                 margin-bottom: 20px;
             }
+            form {
+                margin-bottom: 50px;
+            }
         }
     }
     .projectsSearch {
@@ -154,5 +157,39 @@ main {
     .riskTitle:hover {
         background-color: $yellowHover;
         cursor: pointer;
+    }
+    
+    .checkboxes {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        div {
+            margin: 5px 0;
+            width: 30%;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            background-color: #D9D9D9;
+            input[type=checkbox] {
+                margin: 5px;
+                margin-right: 10px;
+            }
+        }
+        .operativeCheckbox {
+            display: flex;
+            flex-wrap: wrap;
+            width: 48%;
+            margin-top: 10px;
+            label {
+                font-weight: bold;
+            }
+            p {
+                margin: 4px;
+                width: 100%;
+            }
+        }
     }
 }

@@ -161,22 +161,6 @@ form.fullPage .sequence .add {
   left: 99%;
   z-index: 1;
 }
-form.fullPage div {
-  margin: 5px 0;
-  width: 30%;
-  display: flex;
-  align-items: center;
-}
-form.fullPage div input[type=checkbox] {
-  margin: 5px;
-  margin-right: 10px;
-}
-form.fullPage .checkboxes {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-}
 
 .back {
   margin-top: 20px;
@@ -314,6 +298,9 @@ main .twoThirds aside h3 {
   margin-top: 0;
   margin-bottom: 20px;
 }
+main .twoThirds aside form {
+  margin-bottom: 50px;
+}
 main .projectsSearch {
   display: flex;
   justify-content: space-between;
@@ -400,4 +387,37 @@ main .riskTitle td {
 main .riskTitle:hover {
   background-color: #D88809;
   cursor: pointer;
+}
+main .checkboxes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+main .checkboxes div {
+  margin: 5px 0;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: #D9D9D9;
+}
+main .checkboxes div input[type=checkbox] {
+  margin: 5px;
+  margin-right: 10px;
+}
+main .checkboxes .operativeCheckbox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 48%;
+  margin-top: 10px;
+}
+main .checkboxes .operativeCheckbox label {
+  font-weight: bold;
+}
+main .checkboxes .operativeCheckbox p {
+  margin: 4px;
+  width: 100%;
 }

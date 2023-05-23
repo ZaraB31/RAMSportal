@@ -22,6 +22,7 @@
                 <th>Project Title</th>
                 <th>Company</th>
                 <th>Date Created</th>
+                <th>Created By</th>
             </tr>
             @if($projects->count() > 0)
                 @foreach($projects as $project)
@@ -29,6 +30,7 @@
                     <td><a href="/Project/{{$project->id}}">{{$project->title}} <i class="fa-solid fa-arrow-right"></i></a></td>
                     <td>{{$project->company->name}}</td>
                     <td>{{date('j F Y', strtotime($project->created_at))}}</td>
+                    <td>{{$project->user->name}}</td>
                 </tr>
                 @endforeach
             @else 
@@ -37,8 +39,6 @@
                 </tr>
             @endif
         </table>
-        
-
     </section>
 </main>
 

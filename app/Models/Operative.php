@@ -28,4 +28,8 @@ class Operative extends Model
     public function project() {
         return $this->belongsToMany(Project::class, 'project_oeratives');
     }
+
+    public function qualification() {
+        return $this->belongsToMany(Qualification::class, 'operative_qualifications');
+    }
 }
