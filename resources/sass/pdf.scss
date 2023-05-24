@@ -31,7 +31,7 @@ header {
 }
 main {
     width: 80%;
-    padding: 2% 10%;
+    padding: 0 10%;
     table {
         width: 100%;
         border-collapse: collapse;
@@ -124,6 +124,9 @@ table.operativesTable {
 }
 .hazardRatings {
     margin-bottom: 4%;
+    h2 {
+        margin:0;
+    }
     table {
         text-align: left;
         vertical-align: top;
@@ -167,6 +170,7 @@ table.operativesTable {
     }
 }
 .register {
+    page-break-inside: auto;
     tr {
         th, td {
             border: 1px solid black;

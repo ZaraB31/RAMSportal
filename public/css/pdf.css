@@ -30,7 +30,7 @@ header table tr td {
 
 main {
   width: 80%;
-  padding: 2% 10%;
+  padding: 0 10%;
 }
 main table {
   width: 100%;
@@ -120,6 +120,9 @@ table.operativesTable tr td ul li {
 .hazardRatings {
   margin-bottom: 4%;
 }
+.hazardRatings h2 {
+  margin: 0;
+}
 .hazardRatings table {
   text-align: left;
   vertical-align: top;
@@ -155,6 +158,9 @@ table.operativesTable tr td ul li {
   margin-top: 20%;
 }
 
+.register {
+  page-break-inside: auto;
+}
 .register tr th, .register tr td {
   border: 1px solid black;
 }

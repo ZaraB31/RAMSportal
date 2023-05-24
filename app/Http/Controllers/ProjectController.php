@@ -266,7 +266,7 @@ class ProjectController extends Controller
             array_push($projectTools, $methodTool['tool_id']);
         }
         
-        $sections = Section::where('type', 'risks')->get();
+        $sections = Section::all();
         $proRisks = ProjectRisk::where('project_id', $id)->get();
         $projectRisks = [];
         foreach($proRisks as $proRisk) {

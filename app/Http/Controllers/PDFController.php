@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Webklex\PDFMerger\Facades\PDFMergerFacade as PDFMerger;
 use App\Models\Project;
 use App\Models\ProjectRisk;
 use App\Models\Risk;
@@ -52,9 +53,21 @@ class PDFController extends Controller
             'latestAmmendment' => $latestAmmendment,
         ];
 
+        $methodStatement = PDF::loadView('pdfs/methodStatement', $data)->setPaper('a4', 'portrait')->save('../public/components/method-'.$id.'.pdf');
+        $riskAssesment = PDF::loadView('pdfs/riskAssessment', $data)->setPaper('a4', 'landscape')->save('../public/components/risks-'.$id.'.pdf');
+        $dailyRA = PDF::loadView('pdfs/dailyRA', $data)->setPaper('a4', 'portrait')->save('../public/components/daily-'.$id.'.pdf');
+
+        $pdf = PDFMerger::init();
+        $pdf->addPDF(base_path('public/components/method-'.$id.'.pdf'), 'all');
+        $pdf->addPDF(base_path('public/components/risks-'.$id.'.pdf'), 'all');
+        $pdf->addPDF(base_path('public/components/daily-'.$id.'.pdf'), 'all');
+        $pdf->merge();
+
         $fileName = $project['title'] . ' - V' . $version . '.pdf';
         $filePath = '../public/pdf/' . $fileName;
-        $RAMS = PDF::loadView('pdfs/rams', $data)->save($filePath);
+
+        $pdf->save($filePath, "file");
+        
 
         // return view('pdfs/rams', ['project' => $project, 
         //                     'before' => $before,

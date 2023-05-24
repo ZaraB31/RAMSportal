@@ -75,7 +75,7 @@
             <div class="checkboxes">
                 @foreach($operatives as $operative)
                 <div>
-                    @foreach($project->operative as $projectOperative)
+                    
                     @if(in_array($operative->id, $projectOperatives))
                     <input checked type="checkbox" name="operative[]" id="operative_id" value="{{$operative->id}}">
                     <label for="operative_id">{{$operative->name}}</label>
@@ -83,7 +83,7 @@
                     <input type="checkbox" name="operative[]" id="operative_id" value="{{$operative->id}}">
                     <label for="operative_id">{{$operative->name}}</label>
                     @endif
-                    @endforeach
+                    
                 </div>
                 @endforeach
             </div>
