@@ -33,7 +33,7 @@ class ProjectController extends Controller
     }
     
     public function index() {
-        $projects = Project::all();
+        $projects = Project::all()->sortByDesc('created_at');
 
         return view('projects/dashboard', ['projects' => $projects]);
     }
@@ -57,7 +57,7 @@ class ProjectController extends Controller
             'client_id' => ['required'],
             'location' => ['required'],
             'start' => ['required', 'after_or_equal:today'],
-            'duration' => ['required'],
+            'end' => ['required'],
             'workingHours' => ['required'],
             'emergencyPhone' => ['required', 'numeric', 'digits:11'],
             'hospital_id' => ['required'],
@@ -70,7 +70,7 @@ class ProjectController extends Controller
             'location' => 'The project site address is requried', 
             'start.required' => 'The project start date is required',
             'start.after_or_equal' => 'The project start date must not be in the past',
-            'duration.required' => 'The project duration is requried',
+            'end.required' => 'The project end is requried',
             'workingHours.required' => 'The project working hours are required',
             'emergencyPhone.required' => 'An emergency phone number is required',
             'emergencyPhone.numeric' => 'The emergency phone number must only be numeric values',
@@ -79,6 +79,10 @@ class ProjectController extends Controller
             'supervisor_id.requried' => 'The project supervisor is requried',
             'manager_id.requried' => 'The project manager is requried',
         ]);
+
+        if ($validatedData->fails()) {
+            return redirect('projects/createDetails')->withErrors($validatedData)->withInput();
+        }
 
         $user = Auth()->user();
         $company = Company::find($user['company_id'])->first();
@@ -95,11 +99,12 @@ class ProjectController extends Controller
             'project_id' => $project['id'],
             'location' => $request['location'],
             'start' => $request['start'],
-            'duration' => $request['duration'],
+            'end' => $request['end'],
             'workingHours' => $request['workingHours'],
             'hospital_id' => $request['hospital_id'],
             'supervisor_id' => $request['supervisor_id'],
             'manager_id' => $request['manager_id'],
+            'emergencyPhone' => $request['emergencyPhone'],
         ]);
 
         foreach($request->get('operative_id') as $operative) {
@@ -129,8 +134,8 @@ class ProjectController extends Controller
                                               'tools' => $tools]);
     }
 
-    public function storeMethod(Request $request) {
-        $project = Project::find($request['project_id'])->first();
+    public function storeMethod(Request $request, $id) {
+        $project = Project::findOrFail($id);
 
         $validateData = $request->validate([
             'description' => ['required'],
@@ -177,7 +182,7 @@ class ProjectController extends Controller
         return view('projects/createRisks', ['project' => $project, 'sections' => $sections]);
     }
 
-    public function storeRisks(Request $request) {
+    public function storeRisks(Request $request, $id) {
         $risks = [];
 
         foreach($request->get('projectRisks') as $riskID) {
@@ -188,12 +193,12 @@ class ProjectController extends Controller
 
         foreach($risks as $risk) {
             $projectRisk = ProjectRisk::create([
-                'project_id' => $request['project_id'],
+                'project_id' => $id,
                 'risk_id' => $risk,
             ]);
         }
 
-        return redirect()->route('showProject', $request['project_id']);
+        return redirect()->route('showProject', $id);
     }
 
     public function show($id) {

@@ -19,18 +19,16 @@
             <table>
                 <tr>
                     <th>Tool</th>
-                    <th>Type</th>
                 </tr>
                 @if($tools->count() > 0)
                     @foreach($tools as $tool)
                     <tr>
                         <td>{{$tool->name}}</td>
-                        <td>{{$tool->section->name}}</td>
                     </tr>
                     @endforeach
                 @else 
                     <tr>
-                        <td colspan="2">No tools added</td>
+                        <td>No tools added</td>
                     </tr>
                 @endif
             </table>
@@ -44,14 +42,6 @@
 
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name">
-
-                <label for="section_id">Tool Type:</label>
-                <select name="section_id" id="section_id">
-                    <option value="">Select...</option>
-                    @foreach($sections as $section)
-                    <option value="{{$section->id}}">{{$section->name}}</option>
-                    @endforeach
-                </select>
 
                 <input class="inverse" type="submit" value="Save">
             </form>

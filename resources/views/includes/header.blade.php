@@ -3,6 +3,7 @@
 
     <nav>
         <ul>
+            <li><a href="/Search"><i class="fa-solid fa-magnifying-glass"></i></a></li>
             <li><a href="/">Projects</a></li>
             <li><a href="/Admin">Admin</a></li>
             <li>

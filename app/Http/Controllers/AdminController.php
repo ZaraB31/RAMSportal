@@ -79,17 +79,15 @@ class AdminController extends Controller
     }
 
     public function sections() {
-        $sections = Section::all()->sortBy('type');
+        $sections = Section::all()->sortBy('name');
 
         return view('admin/sections', ['sections' => $sections]);
     }
 
     public function tools() {
-        $tools = Tool::all();
-        $sections = Section::where('type', 'tools')->get();
+        $tools = Tool::all()->sortBy('name');
 
-        return view('admin/tools', ['sections' => $sections,
-                                    'tools' => $tools]);
+        return view('admin/tools', ['tools' => $tools]);
     }
 
     public function people() {
@@ -105,7 +103,7 @@ class AdminController extends Controller
     }
 
     public function risks() {
-        $sections = Section::where('type', 'risks')->get();
+        $sections = Section::all();
         $risks = Risk::all();
 
         $before = [];

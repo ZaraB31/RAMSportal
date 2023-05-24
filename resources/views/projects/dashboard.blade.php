@@ -9,10 +9,6 @@
 
 <main>
     <section class="projectsSearch">
-        <form action="">
-            <input type="text" placeholder="Search">
-        </form>
-
         <button><a href="/Project/Create/Details">Add New</a></button>
     </section>
 

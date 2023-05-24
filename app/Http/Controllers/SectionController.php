@@ -10,10 +10,8 @@ class SectionController extends Controller
     public function store(Request $request) {
         $validatedData = $request->validate([
             'name' => ['required'],
-            'type' => ['required'],
         ], [
             'name.required' => 'The section name is required',
-            'type.required' => 'the section type is required',
         ]);
 
         $input = $request->all();

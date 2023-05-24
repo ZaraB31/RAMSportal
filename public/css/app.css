@@ -303,17 +303,8 @@ main .twoThirds aside form {
 }
 main .projectsSearch {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
-}
-main .projectsSearch form {
-  width: 50%;
-}
-main .projectsSearch form input {
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #29292A;
-  padding: 4px;
 }
 main .projectsSearch button {
   background-color: #F6A21E;
@@ -420,4 +411,19 @@ main .checkboxes .operativeCheckbox label {
 main .checkboxes .operativeCheckbox p {
   margin: 4px;
   width: 100%;
+}
+main .siteOperatives {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+main .siteOperatives div {
+  width: 30%;
+}
+main .siteOperatives div img {
+  width: 80%;
+  margin-left: 10%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

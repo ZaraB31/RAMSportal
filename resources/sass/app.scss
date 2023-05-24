@@ -72,17 +72,8 @@ main {
     }
     .projectsSearch {
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         align-items: center;
-        form {
-            width: 50%;
-            input {
-                width: 100%;
-                border-radius: 5px;
-                border: 1px solid $offBlack;
-                padding: 4px;
-            }
-        }
         button {
             background-color: $yellow;
             border: none;
@@ -189,6 +180,20 @@ main {
             p {
                 margin: 4px;
                 width: 100%;
+            }
+        }
+    }
+    .siteOperatives{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        div {
+            width: 30%;
+            img {
+                width: 80%;
+                margin-left: 10%;
+                object-fit: cover;
             }
         }
     }

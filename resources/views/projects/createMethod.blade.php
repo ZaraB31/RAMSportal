@@ -11,20 +11,23 @@
     <h2>{{$project->title}} - Add Project Method</h2>
 
     <section>
-        <form action="{{ route('storeProjectMethod') }}" method="post" class="fullPage">
+        <form action="{{ route('storeProjectMethod', $project->id) }}" method="post" class="fullPage">
             @include('includes.error')
 
             <label for="description">Project Description:</label>
-            <textarea name="description" id="description"></textarea>
+            <textarea name="description" id="description" value="{{ old('description') }}"></textarea>
 
             <label for="sequenceStep">Sequence of Works:</label>
             <div class="sequence">
                 <div id="addStep" class="add"><i class="fa-solid fa-plus"></i></div>
-                <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 1">
+                <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 1" value="{{ old('sequenceStep') }}">
                 <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 2">
                 <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 3">
                 <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 4">
-                
+                <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 5">
+                <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 6">
+                <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 7">
+                <input type="text" name="sequenceStep[]" id="sequenceStep" placeholder="Step 8">
             </div>
 
             <label for="ppe_id">PPE Required (select all that apply)</label>
@@ -46,8 +49,6 @@
                 </div>
                 @endforeach
             </div>
-
-            <input type="text" name="project_id" id="project_id" value="{{$project->id}}" style="display:none;">
             
             <input type="submit" value="Next">
         </form>

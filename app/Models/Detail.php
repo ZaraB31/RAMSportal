@@ -10,7 +10,7 @@ class Detail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'project_id', 'location', 'start', 'duration', 'workingHours', 'hospital_id', 'supervisor_id', 'manager_id',
+        'project_id', 'location', 'start', 'end', 'workingHours', 'hospital_id', 'supervisor_id', 'manager_id', 'emergencyPhone',
     ];
 
     public function hospital() {

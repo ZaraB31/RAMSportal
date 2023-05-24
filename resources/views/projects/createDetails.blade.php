@@ -19,36 +19,36 @@
             @include('includes.error')
 
             <label for="title">Project Title:</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="{{ old('title') }}">
 
-            <label for="jobNo">Job Number:</label>
-            <input type="text" name="jobNo" id="jobNo">
+            <label for="jobNo">Job Number (Uppercase):</label>
+            <input type="text" name="jobNo" id="jobNo" value="{{ old('jobNo') }}">
 
             <label for="client_id">Client:</label>
-            <select name="client_id" id="client_id">
+            <select name="client_id" id="client_id" value="{{ old('client_id') }}">
                 <option value="">Select...</option>
                 @foreach($clients as $client)
-                <option value="{{$client->id}}">{{$client->name}}</option>
+                <option value="{{$client->id}}" @selected(old('client_id') == $client->id)>{{$client->name}}</option>
                 @endforeach
             </select>
 
             <label for="location">Site Address:</label>
-            <input type="text" name="location" id="location">
+            <input type="text" name="location" id="location" value="{{ old('location') }}">
 
             <label for="start">Start Date:</label>
-            <input type="date" name="start" id="start">
+            <input type="date" name="start" id="start" value="{{ old('start') }}">
             
             <label for="end">End Date:</label>
-            <input type="date" name="end" id="end">
+            <input type="date" name="end" id="end" value="{{ old('end') }}">
 
             <label for="workingHours">Working Hours:</label>
-            <input type="text" name="workingHours" id="workingHours">
+            <input type="text" name="workingHours" id="workingHours" value="{{ old('workingHours') }}">
 
             <label for="hosital_id">Nearest A&E:</label>
             <select name="hospital_id" id="hospital_id">
                 <option value="">Select...</option>
                 @foreach($hospitals as $hospital)
-                <option value="{{$hospital->id}}">{{$hospital->name}}</option>
+                <option value="{{$hospital->id}}" @selected(old('hospital_id') == $hospital->id)>{{$hospital->name}}</option>
                 @endforeach
             </select>
             
@@ -56,7 +56,7 @@
                 <select name="manager_id" id="manager_id">
                 <option value="">Select...</option>
                 @foreach($operatives as $operative)
-                <option value="{{$operative->id}}">{{$operative->name}}</option>
+                <option value="{{$operative->id}}" @selected(old('manager_id') == $operative->id)>{{$operative->name}}</option>
                 @endforeach
             </select>
 
@@ -64,12 +64,12 @@
             <select name="supervisor_id" id="supervisor_id">
                 <option value="">Select...</option>
                 @foreach($operatives as $operative)
-                <option value="{{$operative->id}}">{{$operative->name}}</option>
+                <option value="{{$operative->id}}" @selected(old('supervisor_id') == $operative->id)>{{$operative->name}}</option>
                 @endforeach
             </select>
 
             <label for="emergencyPhone">Out of hours phone number:</label>
-            <input type="text" name="emergencyPhone" id="emergencyPhone">
+            <input type="text" name="emergencyPhone" id="emergencyPhone" value="{{ old('emergencyPhone') }}">
             
             <label for="qualifications">Training Requirements (select all that apply)</label>
             <div class="checkboxes">
@@ -95,9 +95,7 @@
                     </p>
                 </div>
                 @endforeach
-            </div>
-
-            
+            </div>        
 
             <input type="submit" value="Next">
 

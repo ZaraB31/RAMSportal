@@ -38,15 +38,6 @@
             <p><b>Site Manager: </b>{{$project->detail->manager->name}}</p>
             <p><b>Site Supervisor: </b>{{$project->detail->supervisor->name}}</p>
             <p><b>Out of hours phone number: </b>0{{$project->detail->emergencyPhone}}</p>
-            <p><b>Site Operatives: </b>
-            @if($project->operative->count() === 0)
-                No Operatives Added 
-            @else
-                @foreach($project->operative as $operative)
-                {{$operative->name}},
-                @endforeach
-            @endif
-            </p>
             <p><b>Training Requirements: </b>
                 @if($project->qualification->count() === 0)
                 No Qualifications added
@@ -56,6 +47,28 @@
                 @endforeach
                 @endif   
             </p>
+            <p><b>Site Operatives: </b>
+            @if($project->operative->count() === 0)
+                No Operatives Added 
+            @else
+            <div class="siteOperatives">
+                @foreach($project->operative as $operative)
+                <div>
+                    <img src="/ProfilePictures/{{$operative->profilePic}}" alt="{{$operative->name}}">
+                    <h3>{{$operative->name}}</h3>
+                    <p><b>Company: </b>{{$operative->company->name}}</p>
+                    <p><b>Qualifications: </b>
+                    @foreach($operative->qualification as $qualification)
+                    {{$qualification->name}},
+                    @endforeach
+                    </p>
+                </div>
+                @endforeach
+            </div>
+                
+            @endif
+            </p>
+            
         </section>
 
         <aside>

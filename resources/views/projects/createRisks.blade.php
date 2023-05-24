@@ -11,7 +11,7 @@
     <h2>{{$project->title}} - Add Project Risks</h2>
 
     <section>
-       <form action="{{ route('storeProjectRisks') }}" method="post">
+       <form action="{{ route('storeProjectRisks', $project->id) }}" method="post">
             @include('includes.error')
 
             <table>
@@ -29,7 +29,6 @@
                 @endforeach
             </table>
 
-            <input type="text" name="project_id" id="project_id" value="{{$project->id}}" style="display:none;">
             <input style="margin-bottom: 20px;" type="submit" value="Finish">
         </form>
     </section>

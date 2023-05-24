@@ -16,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\ProjectController::class, 'index'])->name('home');
+Route::get('/Search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
+Route::post('/Search', [App\Http\Controllers\SearchController::class, 'search'])->name('searchProjects');
 Route::get('/Project/Create/Details', [App\Http\Controllers\ProjectController::class, 'createDetails'])->name('createProjectDetails');
 Route::post('/Project/Create/Details', [App\Http\Controllers\ProjectController::class, 'storeDetails'])->name('storeProjectDetails');
 Route::get('/Project/Create/Method/{id}', [App\Http\Controllers\ProjectController::class, 'createMethod'])->name('createProjectMethod');
-Route::post('/Project/Create/Method', [App\Http\Controllers\ProjectController::class, 'storeMethod'])->name('storeProjectMethod');
+Route::post('/Project/Create/Method/{id}', [App\Http\Controllers\ProjectController::class, 'storeMethod'])->name('storeProjectMethod');
 Route::get('/Project/Create/Risks/{id}', [App\Http\Controllers\ProjectController::class, 'createRisks'])->name('createProjectRisks');
-Route::post('/Project/Create/Risks', [App\Http\Controllers\ProjectController::class, 'storeRisks'])->name('storeProjectRisks');
+Route::post('/Project/Create/Risks/{id}', [App\Http\Controllers\ProjectController::class, 'storeRisks'])->name('storeProjectRisks');
 Route::get('/Project/{id}', [App\Http\Controllers\ProjectController::class, 'show'])->name('showProject');
 Route::get('/Project/{id}/Edit', [App\Http\Controllers\ProjectController::class, 'edit'])->name('editProject');
 Route::post('/Project/{id}/Update', [App\Http\Controllers\ProjectController::class, 'update'])->name('updateProject');

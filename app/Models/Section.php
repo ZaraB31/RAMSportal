@@ -10,14 +10,11 @@ class Section extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'type',  
+        'name', 
     ];
 
     public function risk() {
         return $this->belongsToMany(Risk::class, 'risk_sections');
     }
 
-    public function tool() {
-        return $this->hasMany(Tool::class);
-    }
 }
