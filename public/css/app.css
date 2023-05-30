@@ -303,7 +303,7 @@ main .twoThirds aside form {
 }
 main .projectsSearch {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
 }
 main .projectsSearch button {

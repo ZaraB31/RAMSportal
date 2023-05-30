@@ -71,9 +71,6 @@
             <p><b>Description of work to be undertaken:</b></p>
             <p>{{$project->method->description}}</p>
             <p><b>Please read this document carefully and implement the requirements of this method statement.</b></p>
-            <p style="color:red"><b>Estates Department to arrange for all isolations to circuits before lights are worked on. 
-                Both Estates and Mega electricians to work alongside each other to achieve isolations of the replacement fittings 
-                and only to be re-energised when both parties have agreed work has been completed and safe to do so.</b></p>
         </section>
         
         <section class="pageBreak">
@@ -227,7 +224,7 @@
                                 and their responsibility is to control the working area and interface the company 
                                 activities with the client.</li>
                             <li>Site Emergency procedures must be strictly adhered with and all site rules will apply.</li>
-                            <li>The Site Supervisor will have overall responsibilty fro the safe coordination of the company scope of works.</li>
+                            <li>The Site Supervisor will have overall responsibilty for the safe coordination of the company scope of works.</li>
                             <li>The Site Supervisor will highlight any unsafe conditions or actions to the Site Manager and will take 
                                 the appropriate actions to make conditions safe.</li>
                         </ul>
@@ -312,7 +309,7 @@
                     <td>The Mega Electrical NW Ltd site supervisor responsible for the works will ensure that the work area has been inspected 
                         and is free from risk of injury or that suitable and sufficient measures have been taken to comply with current health 
                         and safety legislation prior to any work being undertaken. This method statement will only  be amended by Mega Electrical 
-                        NW Ltd site superviosr and authorised in agreement with Mega ELectrical NW Ltd senior management, any such amendments 
+                        NW Ltd site superviosr and authorised in agreement with Mega Electrical NW Ltd senior management, any such amendments 
                         will be recorded and further instruction given to each operative of the amendments.</td>
                 </tr>
             </table>

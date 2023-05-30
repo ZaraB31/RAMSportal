@@ -72,7 +72,7 @@ main {
     }
     .projectsSearch {
         display: flex;
-        justify-content: end;
+        justify-content: space-between;
         align-items: center;
         button {
             background-color: $yellow;

@@ -8,7 +8,7 @@
 </header> 
 
 <main>
-    <section class="projectsSearch">
+    <section class="projectsSearch" style="justify-content:flex-end;">
         <button><a href="/Project/Create/Details">Add New</a></button>
     </section>
 

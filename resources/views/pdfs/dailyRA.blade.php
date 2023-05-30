@@ -51,6 +51,7 @@
                 </ul></td></tr>
                 <tr><td><b>Note:</b> Every incident shall be thoroughly investigated by the Health and Safety Officer so that the cause of the incident can be 
                 established and preventative means recurrence can be planned and implemented.</td></tr>
+                <tr><td>The Client shall be informed, as soon as practical, of all accidents which occur on or near the site, and a written report shall be submitted within three days.</td></tr>
             </table>
 
             <table class="methodTable">
@@ -87,15 +88,14 @@
                     <tr><td>An emergency assembly point shall be established and details posted in the site office.  All site operatives shall be made aware of the emergency procedure and assembly point during induction training</td></tr>
                     <tr><td>The First Aider for this project will be <b style="color:red;">Site Supervisor</b> and a mobile telephone shall be made available to the site personnel throughout the project for emergency communications.  Powder fire extinguishers 
                         shall be available in the office/storage units and details of the nearest hospital shall be posted in the site office and in the RAMS.</td></tr>
-                    <tr><td>The Client shall be informed, as soon as practical, of all accidents which occur on or near the site, and a written report shall be submitted within three days.</td></tr>
                 </tr>
             </table>
         </section>
 
         @for($x=0; $x<$days+1; $x++)
         <section>
-            <h2>Daily Risk Assessment</h2>
-            <p style="border-bottom:1px solid black">Date:</p>
+            <h2 style="margin:0; border-bottom: 1px solid black;">Daily Risk Assessment <span style="font-size: 16px; margin-left: 10px">Date:</span></h2>
+            
             <p>This Daily Risk Assessment is not a replacement for the Risk Assessment and Method Statements (RAMS) for the project, but to support the RAMS continue to be effective 
                 at controlling risks on the day of activities to support further hazard and risks are eliminated prior to work commencing.</p>
         </section>
@@ -110,7 +110,7 @@
                 </tr>
                 @foreach($types as $type)
                 <tr>
-                    <td style="width:30%; padding:15px 5px;">{{$type}}</td>
+                    <td style="width:30%; padding:5px;">{{$type}}</td>
                     <td></td>
                     <td></td>
                     <td style="width:7%; text-align:center; background-color: #F6361E;">HIGH</td>
@@ -122,8 +122,8 @@
                     <td style="background-color:lightgrey; text-align:center;" colspan="6">I confirm that the general safety on this job has been maintained and agree to proceed with the job/task safely</td>
                 </tr>
                 <tr>
-                    <td style="padding:15px 5px" colspan="2">Name:</td>
-                    <td style="padding:15px 5px" colspan="4">Signature:</td>
+                    <td style="padding:5px" colspan="2">Name:</td>
+                    <td style="padding:5px" colspan="4">Signature:</td>
                 </tr>
             </table>
         </section>

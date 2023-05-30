@@ -70,23 +70,26 @@
         </section>
 
         <section class="hazards">
-            <table class="hazardsDisplay">
-                <tr>
-                    <th style="width:12%" rowspan="2">Hazard</th>
-                    <th style="width:12%" rowspan="2">Effect</th>
-                    <th style="width:12%" rowspan="2">Persons at Risk</th>
-                    <th colspan="3">Risk</th>
-                    <th style="width:44%" rowspan="2">Control Measures</th>
-                    <th colspan="3">Residual Risk</th>
-                </tr>
-                <tr>
-                    <th style="width:2.5%">L</th>
-                    <th style="width:2.5%">S</th>
-                    <th style="width:4%">L*S</th>
-                    <th style="width:2.5%">L</th>
-                    <th style="width:2.5%">S</th>
-                    <th style="width:4%">L*S</th>
-                </tr>
+            <table class="hazardsDisplay" page-break-inside:auto;>
+                <thead>
+                    <tr>
+                        <th style="width:12%" rowspan="2">Hazard</th>
+                        <th style="width:12%" rowspan="2">Effect</th>
+                        <th style="width:12%" rowspan="2">Persons at Risk</th>
+                        <th colspan="3">Risk</th>
+                        <th style="width:44%" rowspan="2">Control Measures</th>
+                        <th colspan="3">Residual Risk</th>
+                    </tr>
+                    <tr>
+                        <th style="width:2.5%">L</th>
+                        <th style="width:2.5%">S</th>
+                        <th style="width:4%">L*S</th>
+                        <th style="width:2.5%">L</th>
+                        <th style="width:2.5%">S</th>
+                        <th style="width:4%">L*S</th>
+                    </tr>
+                </thead>
+                
                 @foreach($project->risk as $risk)
                 <tr>
                     <td>{{$risk->hazard}}</td>

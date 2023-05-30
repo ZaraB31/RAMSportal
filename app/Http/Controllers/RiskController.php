@@ -13,7 +13,7 @@ class RiskController extends Controller
 {
     public function create() {
         $people = Person::all();
-        $sections = Section::where('type', 'risks')->get()->sortBy('name');
+        $sections = Section::all()->sortBy('name');
         $types = RiskType::all()->sortBy('type');
 
         return view('admin/risksCreate', ['people' => $people,
@@ -64,5 +64,43 @@ class RiskController extends Controller
         }
 
         return redirect()->route('adminRisks')->with('success', 'Risk added!');
+    }
+
+    public function edit($id) {
+        $risk = Risk::findOrFail($id);
+        $people = Person::all();
+
+        $sections = Section::all()->sortBy('name');
+        $riskSectionIds = [];
+        $riskSections = RiskSection::where('risk_id', $id)->get();
+        foreach($riskSections as $riskSection) {
+            array_push($riskSectionIds, $riskSection->section_id);
+        }
+
+        $types = RiskType::all()->sortBy('type');
+
+        return view('admin/editRisk', ['risk' => $risk,
+                                       'people' => $people,
+                                       'sections' => $sections,
+                                       'types' => $types,
+                                       'riskSectionIds' => $riskSectionIds]);
+    }
+
+    public function update(Request $request, $id) {
+        $risk = Risk::FindOrFail($id);
+
+        $input = $request->all();
+        $risk->update($input);
+        $risk->save();
+
+        $sections = RiskSection::where('risk_id', $id)->delete();
+        foreach($request->get('sections') as $sectionID) {
+            $riskSections = RiskSection::create([
+                'risk_id' => $risk['id'],
+                'section_id' => $sectionID,
+            ]);
+        }
+
+        return redirect()->route('adminRisks')->with('success', 'Risk Updated!');
     }
 }

@@ -84,7 +84,7 @@
             <label for="operative_id">Project Operatives (Select all that apply, this should include the Site Manager and Site Supervisor)</label>
             <div class="checkboxes">
                 @foreach($operatives as $operative)
-                <div class="operativeCheckbox">
+                <div class="operativeCheckbox" style="display:none;" name="@foreach($operative->qualification as $qualification){{$qualification->id}} @endforeach">
                     <input type="checkbox" name="operative_id[]" id="operative_id" value="{{ $operative->id }}">
                     <label for="operative_id">{{$operative->name}}</label>
                     <p><b>Company: </b>{{$operative->company->name}}</p>
@@ -96,11 +96,26 @@
                 </div>
                 @endforeach
             </div>        
-
             <input type="submit" value="Next">
-
         </form>
     </section>
 </main>
+
+<script>
+    var display = [];
+
+    $(document).on('change', '[name="qualifications[]"]', function(ev) {
+        var qualification = $(this);
+        var id = qualification.val();
+        
+        if(qualification.is(':checked')) {
+            array_push(display, id);
+        } else {
+            array_splice(id, 1);
+        }
+
+        console.log(display);
+    });
+</script>
 
 @endsection

@@ -56,5 +56,7 @@ Route::post('Admin/Tools/Create', [App\Http\Controllers\ToolController::class, '
 Route::post('Admin/People/Create', [App\Http\Controllers\PersonController::class, 'store'])->name('storePerson');
 Route::get('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'create'])->name('createRisk');
 Route::post('Admin/Risks/Create', [App\Http\Controllers\RiskController::class, 'store'])->name('storeRisk');
+Route::get('Admin/Risks/Edit/{id}', [App\Http\Controllers\RiskController::class, 'edit'])->name('EditRisk');
+Route::post('Admin/Risks/Edit/{id}', [App\Http\Controllers\RiskController::class, 'update'])->name('updateRisk');
 Route::post('Admin/RiskTypes/Create', [App\Http\Controllers\RiskTypeController::class, 'store'])->name('storeRiskType');
 Route::post('Admin/Qualifications/Create', [App\Http\Controllers\QualificationController::class, 'store'])->name('storeQualification');

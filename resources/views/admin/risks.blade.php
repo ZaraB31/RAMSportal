@@ -22,7 +22,7 @@
         <table>
             <tr>
                 <th style="width:42%">Hazard</th>
-                <th style="width:34%">Section(s)</th>
+                <th style="width:34%">Risk Type</th>
                 <th style="width:12%">Risk</th>
                 <th style="width:12%">Residual Risk</th>
             </tr>
@@ -31,9 +31,9 @@
                 <tr onClick="openTable('{{$section->name}}')" class="riskTitle" id="{{$section->name}}">
                     <td colspan="4">{{$section->name}} <i class="fa-solid fa-chevron-down"></i></td>
                 </tr>
-                @foreach($section->risk as $risk)
+                @foreach($section->risk->sortBy('hazard') as $risk)
                 <tr class="risk {{$section->name}}" style="display:none;">
-                    <td>{{$risk->hazard}}</td> 
+                    <td><a href="/Admin/Risks/Edit/{{$risk->id}}" style="margin-right:10px;"><i class="fa-solid fa-pen-to-square"></i></a>{{$risk->hazard}}</td> 
                     <td>{{$risk->type->type}}</td>
                     @if($before[$risk->id] <= 5)
                         <td style="background-color: #08bf1c; border-bottom: 2px solid #0AF023">{{$risk->likelihood}} x {{$risk->severity}} = {{ $before[$risk->id] }}</td>
