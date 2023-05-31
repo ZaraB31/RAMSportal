@@ -16,17 +16,23 @@
 
     <section class="twoThirds">
         <article>
-            @if($clients->count() > 0)
-                @foreach($clients as $client)
-                <div class="card">
-                    <h3>{{$client->name}}</h3>
-                </div>
-                @endforeach
-            @else 
-                <div class="card">
-                    <h3>No clients added</h3>
-                </div>
-            @endif
+            <table>
+                <tr>
+                    <th>Clients</th>
+                </tr>
+                @if($clients->count() > 0)
+                    @foreach($clients as $client)
+                    <tr>
+                        <td>{{$client->name}}</td>
+                    </tr>
+                    @endforeach
+                @else 
+                    <tr>
+                        <td>No clients added</td>
+                    </tr>
+                @endif
+            </table>
+            
         </article>
 
         <aside>

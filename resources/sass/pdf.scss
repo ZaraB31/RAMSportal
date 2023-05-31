@@ -8,8 +8,8 @@ header {
     position: fixed; 
     top: -90px; 
     width: 90%;
-    padding: 0 5% 10px;
-    height: 80px;
+    padding: 10px 5% 10px;
+    height: 100px;
     padding-bottom: 10px;
     text-align: center;
     
@@ -20,11 +20,14 @@ header {
     table {
         width: 90%;
         margin-left: 5%;
+        margin-top: 10px;
+        margin-bottom: 10px;
         border-collapse: collapse;
         border: none;
         tr {
             td {
                 font-size: 11px;
+                vertical-align: bottom;
             }
         }
     }
@@ -159,14 +162,14 @@ table.operativesTable {
         margin-top: 5%;
     }
     div {
-        margin-top: 20%;
+        margin-top: 10%;
     }
     table {
         width: 80%;
         margin-left: 10%;
         border-collapse: collapse;
         text-align: center;
-        margin-top: 20%;
+        margin-top: 10%;
     }
 }
 .register {

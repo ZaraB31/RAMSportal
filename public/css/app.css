@@ -427,3 +427,11 @@ main .siteOperatives div img {
   -o-object-fit: cover;
      object-fit: cover;
 }
+main .methods {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main .methods div {
+  width: 48%;
+}

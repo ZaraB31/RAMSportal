@@ -59,7 +59,7 @@ class AdminController extends Controller
     public function operatives() {
         $operatives = Operative::all()->sortBy('name');
         $companies = Company::all();
-        $qualifications = Qualification::all();
+        $qualifications = Qualification::all()->sortBy('name');
 
         return view('admin/operatives', ['operatives' => $operatives, 
                                          'companies' => $companies,

@@ -105,27 +105,39 @@
 
     <section>
         <h2>Project Methods:</h2>
-        <p><b>Project Description:</b></p>
-        <textarea id="content">{{$project->method->description}}</textarea>
+        <section class="methods">
+            <div>
+                <p><b>Project Description:</b></p>
+                <textarea id="content">{{$project->method->description}}</textarea>
+            </div>
 
-        <p><b>Sequence of Works:</b></p>
-        @foreach($project->method->sequence as $sequence)
-            <p>{{$sequence->stepNo}}. {{$sequence->description}}</p>
-        @endforeach
+            <div>
+                <p><b>PPE:</b></p>
+                <ul>
+                    @foreach($project->method->PPE as $ppe)
+                    <li>{{$ppe->name}}</li>
+                    @endforeach
+                </ul>  
+            </div>
 
-        <p><b>PPE:</b></p>
-        <ul>
-            @foreach($project->method->PPE as $ppe)
-            <li>{{$ppe->name}}</li>
-            @endforeach
-        </ul>
-
-        <p><b>Tools:</b></p>
-        <ul>
-            @foreach($project->method->tool as $tool)
-            <li>{{$tool->name}}</li>
-            @endforeach
-        </ul>
+            <div>
+                <p><b>Sequence of Works:</b></p>
+                @foreach($project->method->sequence as $sequence)
+                    <p style="margin:0;">{{$sequence->stepNo}}. {{$sequence->description}}</p>
+                @endforeach  
+            </div>
+              
+            <div>
+                <p><b>Tools:</b></p>
+                <ul>
+                    @foreach($project->method->tool as $tool)
+                    <li>{{$tool->name}}</li>
+                    @endforeach
+                </ul> 
+            </div>
+            
+        </section>
+        
     </section>
 
     <section>
@@ -134,7 +146,7 @@
             <tr>
                 <th colspan="3">Project Risks</th>
             </tr>
-            @foreach($project->risk as $risk) 
+            @foreach($project->risk->sortBy('hazard') as $risk) 
             <tr>
                 <td>{{$risk->hazard}}</td>
                 @if($before[$risk->id] <= 5)

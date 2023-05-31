@@ -8,7 +8,8 @@
 </header> 
 
 <main>
-    <section class="projectsSearch" style="justify-content:flex-end;">
+    <section class="projectsSearch">
+        <h2 style="margin:0;">Hello {{$user->name}}</h2>
         <button><a href="/Project/Create/Details">Add New</a></button>
     </section>
 

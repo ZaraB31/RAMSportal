@@ -34,8 +34,9 @@ class ProjectController extends Controller
     
     public function index() {
         $projects = Project::all()->sortByDesc('created_at');
+        $user = Auth::user();
 
-        return view('projects/dashboard', ['projects' => $projects]);
+        return view('projects/dashboard', ['projects' => $projects, 'user' => $user]);
     }
 
     public function createDetails() {

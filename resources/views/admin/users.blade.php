@@ -22,6 +22,7 @@
                     <h3>{{$user->name}}</h3>
                     <p><b>Email Address:</b> {{$user->email}}</p>
                     <p><b>Company:</b> {{$user->company->name}}</p>
+                    <p><b>Position:</b> {{$user->position}}</p>
                 </div>
                 @endforeach
             @else 

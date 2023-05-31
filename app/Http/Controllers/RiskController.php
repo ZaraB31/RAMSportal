@@ -11,6 +11,16 @@ use App\Models\RiskType;
 
 class RiskController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function create() {
         $people = Person::all();
         $sections = Section::all()->sortBy('name');

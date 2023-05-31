@@ -7,6 +7,16 @@ use App\Models\Ppe;
 
 class PpeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store(Request $request) {
         $validatedData = $request->validate([
             'name' => ['required', 'unique:ppes'],

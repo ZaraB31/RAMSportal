@@ -10,6 +10,16 @@ use Auth;
 
 class ApprovalController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function approve($id) {
         $project = Project::findOrFail($id);
         $userID = Auth::id();

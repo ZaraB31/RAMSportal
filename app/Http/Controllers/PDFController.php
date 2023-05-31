@@ -14,6 +14,16 @@ use PDF;
 
 class PDFController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function generateRAMS($id, $version) {
         $project = Project::findOrFail($id);
         $types = [];
