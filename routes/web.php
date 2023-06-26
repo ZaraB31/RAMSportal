@@ -61,3 +61,15 @@ Route::get('Admin/Risks/Edit/{id}', [App\Http\Controllers\RiskController::class,
 Route::post('Admin/Risks/Edit/{id}', [App\Http\Controllers\RiskController::class, 'update'])->name('updateRisk');
 Route::post('Admin/RiskTypes/Create', [App\Http\Controllers\RiskTypeController::class, 'store'])->name('storeRiskType');
 Route::post('Admin/Qualifications/Create', [App\Http\Controllers\QualificationController::class, 'store'])->name('storeQualification');
+
+Route::delete('/DeleteClient/{id}', [App\Http\Controllers\ClientController::class, 'delete'])->name('deleteClient');
+Route::delete('/DeleteCompany/{id}', [App\Http\Controllers\CompanyController::class, 'delete'])->name('deleteCompany');
+Route::delete('/DeleteHospital/{id}', [App\Http\Controllers\HospitalController::class, 'delete'])->name('deleteHospital');
+Route::delete('/DeleteOperative/{id}', [App\Http\Controllers\OperativeController::class, 'delete'])->name('deleteOperative');
+Route::delete('/DeletePerson/{id}', [App\Http\Controllers\PersonController::class, 'delete'])->name('deletePerson');
+Route::delete('/DeletePPE/{id}', [App\Http\Controllers\PpeController::class, 'delete'])->name('deletePPE');
+Route::delete('/DeleteQualification/{id}', [App\Http\Controllers\QualificationController::class, 'delete'])->name('deleteQualification');
+Route::delete('/DeleteRisk/{id}', [App\Http\Controllers\RiskController::class, 'delete'])->name('deleteRisk');
+Route::delete('/DeleteRiskType/{id}', [App\Http\Controllers\RiskTypeController::class, 'delete'])->name('deleteRiskType');
+Route::delete('/DeleteSection/{id}', [App\Http\Controllers\SectionController::class, 'delete'])->name('deleteSection');
+Route::delete('/DeleteTool/{id}', [App\Http\Controllers\ToolController::class, 'delete'])->name('deleteTool');

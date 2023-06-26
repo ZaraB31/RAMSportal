@@ -18,17 +18,18 @@
         <article>
             <table>
                 <tr>
-                    <th>Clients</th>
+                    <th colspan="2">Clients</th>
                 </tr>
                 @if($clients->count() > 0)
                     @foreach($clients as $client)
                     <tr>
                         <td>{{$client->name}}</td>
+                        <td><i onclick="openForm('DeleteClient', {{$client->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else 
                     <tr>
-                        <td>No clients added</td>
+                        <td colspan="2">No clients added</td>
                     </tr>
                 @endif
             </table>
@@ -50,4 +51,16 @@
     </section>
 </main>
 
+<div class="deleteForm" id="DeleteClient" style="display:none;">
+    <h2>Are you sure you want to delete this client?</h2>
+    <p>By deleting the client, you will also delete any data associated with it, inlcuding projects. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteClient')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 @endsection

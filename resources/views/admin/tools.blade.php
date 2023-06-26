@@ -23,7 +23,7 @@
                 @if($tools->count() > 0)
                     @foreach($tools as $tool)
                     <tr>
-                        <td>{{$tool->name}}</td>
+                        <td>{{$tool->name}} <i onclick="openForm('DeleteTool', {{$tool->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else 
@@ -48,5 +48,18 @@
         </aside>
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteTool" style="display:none;">
+    <h2>Are you sure you want to delete this tool?</h2>
+    <p>By deleting the tool, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteTool')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

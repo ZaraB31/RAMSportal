@@ -29,4 +29,12 @@ class SectionController extends Controller
 
         return redirect()->route('adminSections')->with('success', 'Section added!');
     }
+
+    public function delete($id) {
+        $section = Section::findOrFail($id);
+
+        $section->delete();
+
+        return redirect()->route('adminSections');
+    }
 }

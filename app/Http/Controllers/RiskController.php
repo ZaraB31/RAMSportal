@@ -113,4 +113,12 @@ class RiskController extends Controller
 
         return redirect()->route('adminRisks')->with('success', 'Risk Updated!');
     }
+
+    public function delete($id) {
+        $risk = Risk::findOrFail($id);
+
+        $risk->delete();
+
+        return redirect()->route('adminRisks');
+    }
 }

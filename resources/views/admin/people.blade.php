@@ -23,7 +23,7 @@
                 @if($people->count() > 0)
                     @foreach($people as $person)
                     <tr>
-                        <td>{{$person->person}}</td>
+                        <td>{{$person->person}} <i onclick="openForm('DeletePerson', {{$person->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else 
@@ -49,4 +49,16 @@
     </section>
 </main>
 
+<div class="deleteForm" id="DeletePerson" style="display:none;">
+    <h2>Are you sure you want to delete this person at risk?</h2>
+    <p>By deleting this person at risk, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeletePerson')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 @endsection

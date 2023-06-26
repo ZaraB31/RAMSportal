@@ -21,7 +21,7 @@
                 <div class="operative card">
                     <img src="/ProfilePictures/{{$operative->profilePic}}" alt="{{$operative->name}}">
                     <div>
-                        <h3>{{$operative->name}}</h3>
+                        <h3>{{$operative->name}} <i onclick="openForm('DeleteOperative', {{$operative->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></h3>
                         <p><b>Company: </b>{{$operative->company->name}}</p>
                         <p><b>Position: </b>{{$operative->position}}</p>
                         <p><b>Phone Number: </b>0{{$operative->phoneNo}}</p>
@@ -80,4 +80,16 @@
     </section>
 </main>
 
+<div class="deleteForm" id="DeleteOperative" style="display:none;">
+    <h2>Are you sure you want to delete this operative?</h2>
+    <p>By deleting the operative, you will also delete any data associated with them. Once they has been deleted, they can not be restored.</p>
+
+    <button onClick="closeForm('DeleteOperative')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 @endsection

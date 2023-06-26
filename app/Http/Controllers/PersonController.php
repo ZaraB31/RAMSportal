@@ -30,4 +30,12 @@ class PersonController extends Controller
 
         return redirect()->route('adminPeople')->with('success', 'People at Risk added!');
     }
+
+    public function delete($id) {
+        $person = Person::findOrFail($id);
+
+        $person->delete();
+
+        return redirect()->route('adminPeople');
+    }
 }

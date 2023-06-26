@@ -205,6 +205,10 @@ main {
             width: 48%;
         }
     }
+    .fa-regular.fa-trash-can:hover {
+        color: $red;
+        cursor: pointer;
+    }
 }
 .deleteForm {
     background-color: black;

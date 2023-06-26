@@ -23,12 +23,12 @@
                 @if($types->count() > 0)
                     @foreach($types as $type)
                     <tr>
-                        <td>{{$type->type}}</td>
+                        <td>{{$type->type}} <i onclick="openForm('DeleteRiskType', {{$type->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else 
                     <tr>
-                        <td colspan="2">No Risk Types added</td>
+                        <td>No Risk Types added</td>
                     </tr>
                 @endif
             </table>
@@ -48,5 +48,18 @@
         </aside>
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteRiskType" style="display:none;">
+    <h2>Are you sure you want to delete this risk type?</h2>
+    <p>By deleting the risk type, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteRiskType')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

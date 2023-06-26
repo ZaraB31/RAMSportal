@@ -19,7 +19,7 @@
             @if($hospitals->count() > 0)
                 @foreach($hospitals as $hospital)
                 <div class="hospital card">
-                    <h3>{{$hospital->name}}</h3>
+                    <h3>{{$hospital->name}} <i onclick="openForm('DeleteHospital', {{$hospital->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></h3>
                     <p><b>Address: </b>{{$hospital->address}}</p>
                 </div>
                 @endforeach
@@ -47,8 +47,20 @@
 
             </form>
         </aside>
-        
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteHospital" style="display:none;">
+    <h2>Are you sure you want to delete this hospital?</h2>
+    <p>By deleting the hospital, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteHospital')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

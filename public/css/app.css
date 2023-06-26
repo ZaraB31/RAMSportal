@@ -435,6 +435,10 @@ main .methods {
 main .methods div {
   width: 48%;
 }
+main .fa-regular.fa-trash-can:hover {
+  color: #F6361E;
+  cursor: pointer;
+}
 
 .deleteForm {
   background-color: black;

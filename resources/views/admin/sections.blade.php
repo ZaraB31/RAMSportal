@@ -23,7 +23,7 @@
                 @if($sections->count() > 0)
                     @foreach($sections as $section)
                     <tr>
-                        <td>{{$section->name}}</td>
+                        <td>{{$section->name}} <i onclick="openForm('DeleteSection', {{$section->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else 
@@ -49,5 +49,18 @@
         </aside>
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteSection" style="display:none;">
+    <h2>Are you sure you want to delete this section?</h2>
+    <p>By deleting the section, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteSection')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

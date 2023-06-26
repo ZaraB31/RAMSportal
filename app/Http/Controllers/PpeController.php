@@ -27,4 +27,12 @@ class PpeController extends Controller
 
         return redirect()->route('adminPPE')->with('success', 'PPE added!');
     }
+
+    public function delete($id) {
+        $PPE = Ppe::findOrFail($id);
+
+        $PPE->delete();
+
+        return redirect()->route('adminPPE');
+    }
 }

@@ -30,4 +30,12 @@ class ClientController extends Controller
 
         return redirect()->route('adminClients')->with('success', 'Client Added!');
     }
+
+    public function delete($id) {
+        $client = Client::findOrFail($id);
+
+        $client->delete();
+
+        return redirect()->route('adminClients');
+    }
 }

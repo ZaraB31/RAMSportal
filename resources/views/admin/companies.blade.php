@@ -19,7 +19,7 @@
             @if($companies->count() > 0)
                 @foreach($companies as $company)
                 <div class="card">
-                    <h3>{{$company->name}}</h3>
+                    <h3>{{$company->name}} <i onclick="openForm('DeleteCompany', {{$company->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></h3>
                     <p><b>Phone Number:</b> 0{{$company->phoneNo}}</p>
                     <p><b>Email Address:</b> {{$company->email}}</p>
                     <p><b>Site Address:</b> {{$company->address}}</p>
@@ -56,5 +56,18 @@
         </aside>
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteCompany" style="display:none;">
+    <h2>Are you sure you want to delete this company?</h2>
+    <p>By deleting the company, you will also delete any data associated with it, inlcuding projects. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteCompany')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

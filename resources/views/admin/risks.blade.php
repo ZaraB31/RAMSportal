@@ -33,7 +33,7 @@
                 </tr>
                 @foreach($section->risk->sortBy('hazard') as $risk)
                 <tr class="risk {{$section->name}}" style="display:none;">
-                    <td><a href="/Admin/Risks/Edit/{{$risk->id}}" style="margin-right:10px;"><i class="fa-solid fa-pen-to-square"></i></a>{{$risk->hazard}}</td> 
+                    <td><a href="/Admin/Risks/Edit/{{$risk->id}}" style="margin-right:10px;"><i class="fa-solid fa-pen-to-square"></i></a><i onclick="openForm('DeleteRisk', {{$risk->id}})" style="margin-right:10px;" class="fa-regular fa-trash-can"></i>{{$risk->hazard}}</td> 
                     <td>{{$risk->type->type}}</td>
                     @if($before[$risk->id] <= 5)
                         <td style="background-color: #08bf1c; border-bottom: 2px solid #0AF023">{{$risk->likelihood}} x {{$risk->severity}} = {{ $before[$risk->id] }}</td>
@@ -61,6 +61,19 @@
         </table>
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteRisk" style="display:none;">
+    <h2>Are you sure you want to delete this risk?</h2>
+    <p>By deleting the risk, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteRisk')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 <script type="application/javascript">
     function openTable(sectionID) {

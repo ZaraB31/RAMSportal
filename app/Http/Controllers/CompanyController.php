@@ -38,4 +38,12 @@ class CompanyController extends Controller
         
         return redirect('Admin/Companies')->with('success', 'Company added!');
     }
+
+    public function delete($id) {
+        $company = Company::findOrFail($id);
+
+        $company->delete();
+
+        return redirect()->route('adminCompanies');
+    }
 }

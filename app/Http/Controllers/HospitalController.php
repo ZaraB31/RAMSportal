@@ -32,4 +32,12 @@ class HospitalController extends Controller
 
         return redirect()->route('adminHospitals')->with('success', 'Hospital added!');
     }
+
+    public function delete($id) {
+        $hospital = findOrFail($id);
+
+        $hospital->delete();
+
+        return redirect()->route('adminHospitals');
+    }
 }

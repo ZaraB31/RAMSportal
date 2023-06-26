@@ -4,3 +4,8 @@ function openForm(formName, elementID) {
     route = "http://localhost:8000/" + formName + "/" + elementID;
     x.querySelector("form").action = route;
 }
+
+function closeForm(formName) {
+    var x = document.getElementById(formName);
+    x.style.display = 'none';
+}

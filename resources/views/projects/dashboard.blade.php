@@ -43,9 +43,11 @@
 </main>
 
 <div class="deleteForm" id="DeleteProject" style="display:none;">
-    <h2>Are you sure you want to delete this project - {{$project->title}}?</h2>
-    <p>By deleteing the project, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
-    <button>Cancel</button>
+    <h2>Are you sure you want to delete this project?</h2>
+    <p>By deleting the project, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeleteProject')">Cancel</button>
+
     <form action="" method="post">
         @include('includes.error')
         @method('DELETE')

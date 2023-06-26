@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Operative;
 use App\Models\OperativeQualification;
+use File;
 
 class OperativeController extends Controller
 {
@@ -55,5 +56,14 @@ class OperativeController extends Controller
         }
 
         return redirect()->route('adminOperatives')->with('success', 'Operative Added!');
+    }
+
+    public function delete($id) {
+        $operative = Operative::findOrFail($id);
+
+        $deletedImage = File::delete(public_path().'/ProfilePictures/'.$operative->profilePic);
+        $operative->delete();
+
+        return redirect()->route('adminOperatives');
     }
 }

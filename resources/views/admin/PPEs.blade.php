@@ -24,7 +24,7 @@
                 @if($PPEs->count() > 0)
                     @foreach($PPEs as $PPE)
                     <tr>
-                        <td>{{$PPE->name}}</td>
+                        <td>{{$PPE->name}} <i onclick="openForm('DeletePPE', {{$PPE->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else
@@ -48,9 +48,20 @@
                 <input type="submit" value="Save" class="inverse">
             </form>
         </aside>
-
     </section>
-
 </main>
+
+<div class="deleteForm" id="DeletePPE" style="display:none;">
+    <h2>Are you sure you want to delete this PPE?</h2>
+    <p>By deleting this PPE, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+
+    <button onClick="closeForm('DeletePPE')">Cancel</button>
+
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

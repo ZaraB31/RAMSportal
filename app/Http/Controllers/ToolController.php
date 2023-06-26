@@ -30,4 +30,12 @@ class ToolController extends Controller
 
         return redirect()->route('adminTools')->with('success', 'Tool added!');
     }
+
+    public function delete($id) {
+        $tool = Tool::findOrFail($id);
+
+        $tool->delete();
+
+        return redirect()->route('adminTools');
+    }
 }
