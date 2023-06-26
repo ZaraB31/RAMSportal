@@ -19,7 +19,7 @@
                 <th>Project Title</th>
                 <th>Company</th>
                 <th>Date Created</th>
-                <th>Created By</th>
+                <th colspan="2">Created By</th>
             </tr>
             @if($projects->count() > 0)
                 @foreach($projects as $project)
@@ -28,6 +28,9 @@
                     <td>{{$project->company->name}}</td>
                     <td>{{date('j F Y', strtotime($project->created_at))}}</td>
                     <td>{{$project->user->name}}</td>
+                    @if($user->name === $project->user->name)
+                    <td><i onclick="openForm('DeleteProject', {{$project->id}})" class="fa-regular fa-trash-can"></i></td>
+                    @endif
                 </tr>
                 @endforeach
             @else 
@@ -38,5 +41,16 @@
         </table>
     </section>
 </main>
+
+<div class="deleteForm" id="DeleteProject" style="display:none;">
+    <h2>Are you sure you want to delete this project - {{$project->title}}?</h2>
+    <p>By deleteing the project, you will also delete any data associated with it. Once it has been deleted, it can not be restored.</p>
+    <button>Cancel</button>
+    <form action="" method="post">
+        @include('includes.error')
+        @method('DELETE')
+        <input class="delete" type="submit" value="Delete">
+    </form>
+</div>
 
 @endsection

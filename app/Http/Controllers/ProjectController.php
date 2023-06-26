@@ -24,6 +24,7 @@ use App\Models\Qualification;
 use App\Models\ProjectQualification;
 use Auth;
 use DB;
+use File;
 
 class ProjectController extends Controller
 {
@@ -386,5 +387,21 @@ class ProjectController extends Controller
         $newAmmendment->save();
 
         return redirect()->route('showProject', $id)->with('success', 'Project Updated!');
+    }
+
+    public function delete($id) {
+        $project = Project::findOrFail($id);
+
+        $documents = Ammendment::where('project_id', $id)->get();
+        foreach($documents as $document) {
+            $deletedFile = File::delete(public_path().'/pdf/'.$document['fileName']);
+        }
+
+        $deletedComponent = File::delete(public_path().'/components/method-'.$id.'.pdf');
+        $deletedComponent = File::delete(public_path().'/components/risks-'.$id.'.pdf');
+        $deletedComponent = File::delete(public_path().'/components/daily-'.$id.'.pdf');
+
+        $project->delete();
+        return redirect()->route('home');
     }
 }

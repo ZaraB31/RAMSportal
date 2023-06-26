@@ -435,3 +435,37 @@ main .methods {
 main .methods div {
   width: 48%;
 }
+
+.deleteForm {
+  background-color: black;
+  width: 50%;
+  color: white;
+  padding: 2% 3%;
+  z-index: 1;
+  position: absolute;
+  top: 18%;
+  left: 21%;
+  box-shadow: 4px 4px 5px black;
+}
+.deleteForm h2 {
+  margin: 0;
+}
+.deleteForm button {
+  width: 35%;
+}
+.deleteForm form {
+  width: 35%;
+  float: right;
+}
+.deleteForm form input[type=submit] {
+  width: 100%;
+  background-color: #F6361E;
+  color: white;
+  float: right;
+  margin: 0;
+  font-size: 17px;
+  padding: 10px 0;
+}
+.deleteForm form input[type=submit]:hover {
+  background-color: #D82009;
+}

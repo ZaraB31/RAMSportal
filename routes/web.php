@@ -29,6 +29,7 @@ Route::get('/Project/{id}/Edit', [App\Http\Controllers\ProjectController::class,
 Route::post('/Project/{id}/Update', [App\Http\Controllers\ProjectController::class, 'update'])->name('updateProject');
 Route::post('/Project/{id}/Approve', [App\Http\Controllers\ApprovalController::class, 'approve'])->name('approveProject');
 Route::get('/Project/{id}/download/{version}', [App\Http\Controllers\ProjectController::class, 'download'])->name('downloadProject');
+Route::delete('/DeleteProject/{id}', [App\Http\Controllers\ProjectController::class, 'delete'])->name('deleteProject');
 
 Route::get('/generate-RAMS/{id}', [App\Http\Controllers\PDFController::class, 'download']);
 
