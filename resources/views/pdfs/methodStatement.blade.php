@@ -196,7 +196,7 @@
                             <li>Carry out daily examination of podium steps, step ladders and scaffolding for signs of damage or defects before use.</li>
                             <li>Scaffolding to be erected by operatives holding PASMA qualification and signed off when safe.</li>
                             <li>The company supervisor is to be notified of any defects from above checks and that all working areas and means of access 
-                                / egress are clear and free from obstruction; on discovery of any obstruction will ensure the area is made safe immediately.</li>
+                                / egress are clear and free from obstruction; on discovery of any obstruction  will ensure the area is made safe immediately.</li>
                         </ul>
                     </td>
                 </tr>

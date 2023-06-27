@@ -112,6 +112,13 @@
             </div>
 
             <div>
+                <p><b>Sequence of Works:</b></p>
+                @foreach($project->method->sequence as $sequence)
+                    <p style="margin:0;">{{$sequence->stepNo}}. {{$sequence->description}}</p>
+                @endforeach  
+            </div>
+
+            <div>
                 <p><b>PPE:</b></p>
                 <ul>
                     @foreach($project->method->PPE as $ppe)
@@ -121,13 +128,6 @@
             </div>
 
             <div>
-                <p><b>Sequence of Works:</b></p>
-                @foreach($project->method->sequence as $sequence)
-                    <p style="margin:0;">{{$sequence->stepNo}}. {{$sequence->description}}</p>
-                @endforeach  
-            </div>
-              
-            <div>
                 <p><b>Tools:</b></p>
                 <ul>
                     @foreach($project->method->tool as $tool)
@@ -135,9 +135,7 @@
                     @endforeach
                 </ul> 
             </div>
-            
         </section>
-        
     </section>
 
     <section>

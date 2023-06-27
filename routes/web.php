@@ -17,7 +17,9 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\ProjectController::class, 'index'])->name('home');
 Route::get('/Search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
-Route::post('/Search', [App\Http\Controllers\SearchController::class, 'search'])->name('searchProjects');
+Route::post('/SearchTitle', [App\Http\Controllers\SearchController::class, 'searchTitle'])->name('searchTitle');
+Route::post('/SearchClient', [App\Http\Controllers\SearchController::class, 'searchClient'])->name('searchClient');
+Route::post('/SearchCompany', [App\Http\Controllers\SearchController::class, 'searchCompany'])->name('searchCompany');
 Route::get('/Project/Create/Details', [App\Http\Controllers\ProjectController::class, 'createDetails'])->name('createProjectDetails');
 Route::post('/Project/Create/Details', [App\Http\Controllers\ProjectController::class, 'storeDetails'])->name('storeProjectDetails');
 Route::get('/Project/Create/Method/{id}', [App\Http\Controllers\ProjectController::class, 'createMethod'])->name('createProjectMethod');
@@ -72,4 +74,4 @@ Route::delete('/DeleteQualification/{id}', [App\Http\Controllers\QualificationCo
 Route::delete('/DeleteRisk/{id}', [App\Http\Controllers\RiskController::class, 'delete'])->name('deleteRisk');
 Route::delete('/DeleteRiskType/{id}', [App\Http\Controllers\RiskTypeController::class, 'delete'])->name('deleteRiskType');
 Route::delete('/DeleteSection/{id}', [App\Http\Controllers\SectionController::class, 'delete'])->name('deleteSection');
-Route::delete('/DeleteTool/{id}', [App\Http\Controllers\ToolController::class, 'delete'])->name('deleteTool');
+Route::delete('/DeleteSection/{id}', [App\Http\Controllers\SectionController::class, 'delete'])->name('deleteSection');

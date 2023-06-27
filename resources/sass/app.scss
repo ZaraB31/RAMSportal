@@ -209,6 +209,25 @@ main {
         color: $red;
         cursor: pointer;
     }
+    .search {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        button {
+            margin-bottom: 20px;
+            width: 30%;
+        }
+        form {
+            width: 100%;
+            input {
+                width: 99%;
+            }
+        }
+    }
+    .active {
+        background-color: black;
+        color: white;
+    }
 }
 .deleteForm {
     background-color: black;

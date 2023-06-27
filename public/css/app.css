@@ -439,6 +439,25 @@ main .fa-regular.fa-trash-can:hover {
   color: #F6361E;
   cursor: pointer;
 }
+main .search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+main .search button {
+  margin-bottom: 20px;
+  width: 30%;
+}
+main .search form {
+  width: 100%;
+}
+main .search form input {
+  width: 99%;
+}
+main .active {
+  background-color: black;
+  color: white;
+}
 
 .deleteForm {
   background-color: black;
