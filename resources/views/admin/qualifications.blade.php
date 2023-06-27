@@ -23,7 +23,7 @@
                 @if($qualifications->count() > 0)
                     @foreach($qualifications as $qualification)
                     <tr>
-                        <td>{{$qualification->name}}</td>
+                        <td>{{$qualification->name}} <i onclick="openForm('DeleteQualification', {{$qualification->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
                     </tr>
                     @endforeach
                 @else 

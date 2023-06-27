@@ -29,9 +29,11 @@
                     <td><a href="/Project/{{$project->id}}">{{$project->title}} <i class="fa-solid fa-arrow-right"></i></a></td>
                     <td>{{$project->company->name}}</td>
                     <td>{{date('j F Y', strtotime($project->created_at))}}</td>
-                    <td>{{$project->user->name}}</td>
                     @if($user->name === $project->user->name)
+                    <td>{{$project->user->name}}</td>
                     <td><i onclick="openForm('DeleteProject', {{$project->id}})" class="fa-regular fa-trash-can"></i></td>
+                    @else
+                    <td colspan="2">{{$project->user->name}}</td>
                     @endif
                 </tr>
                 @endforeach

@@ -69,7 +69,10 @@
             </select>
 
             <label for="emergencyPhone">Out of hours phone number:</label>
-            <input type="text" name="emergencyPhone" id="emergencyPhone" value="{{ old('emergencyPhone') }}">
+            <select name="emergencyPhone" id="emergencyPhone">
+                <option value="">Select...</option>
+                <option value="7432536786" @selected(old('emergencyPhone') == "7432536786")>Call out phone - 07432536786</option>
+            </select>
             
             <label for="qualifications">Training Requirements (select all that apply)</label>
             <div class="checkboxes">
@@ -84,15 +87,11 @@
             <label for="operative_id">Project Operatives (Select all that apply, this should include the Site Manager and Site Supervisor)</label>
             <div class="checkboxes">
                 @foreach($operatives as $operative)
-                <div class="operativeCheckbox" style="display:none;" name="@foreach($operative->qualification as $qualification){{$qualification->id}} @endforeach">
+                <div class="operativeCheckbox">
                     <input type="checkbox" name="operative_id[]" id="operative_id" value="{{ $operative->id }}">
                     <label for="operative_id">{{$operative->name}}</label>
                     <p><b>Company: </b>{{$operative->company->name}}</p>
-                    <p><b>Qualifications:</b>
-                    @foreach($operative->qualification as $qualification)
-                    {{$qualification->name}},
-                    @endforeach
-                    </p>
+                    <p><b>Position: </b>{{$operative->position}}</p>
                 </div>
                 @endforeach
             </div>        
@@ -100,23 +99,6 @@
         </form>
     </section>
 </main>
-
-<script>
-    var display = [];
-
-    $(document).on('change', '[name="qualifications[]"]', function(ev) {
-        var qualification = $(this);
-        var id = qualification.val();
-        
-        if(qualification.is(':checked')) {
-            array_push(display, id);
-        } else {
-            array_splice(id, 1);
-        }
-
-        console.log(display);
-    });
-</script>
 
 <script tye="text/javascript">
     $('#client_id').select2({

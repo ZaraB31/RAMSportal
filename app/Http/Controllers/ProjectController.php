@@ -87,10 +87,6 @@ class ProjectController extends Controller
             'manager_id.requried' => 'The project manager is requried',
         ]);
 
-        if ($validatedData->fails()) {
-            return redirect('projects/createDetails')->withErrors($validatedData)->withInput();
-        }
-
         $user = Auth()->user();
         $company = Company::find($user['company_id'])->first();
 
