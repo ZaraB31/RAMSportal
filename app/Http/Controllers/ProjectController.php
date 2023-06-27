@@ -409,4 +409,15 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('home');
     }
+
+    public function dataAjax(Request $request) {
+        $data = [];
+
+        if($request->has('q')) {
+            $search = $request->q;
+            $data = DB::table("clients")->select("id", "name")->where('name', 'LIKE', "%$search%")->get();
+        }
+        
+        return response()->json($data);
+    }
 }

@@ -118,4 +118,26 @@
     });
 </script>
 
+<script tye="text/javascript">
+    $('#client_id').select2({
+        placeholder: 'Start typing the Client Name',
+        ajax: {
+            url: '/select2-autocomplete-ajax',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+    });
+</script>
+
 @endsection

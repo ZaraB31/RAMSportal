@@ -161,6 +161,17 @@ form.fullPage .sequence .add {
   left: 99%;
   z-index: 1;
 }
+form.fullPage span.select2 {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+form.fullPage span {
+  border-radius: 0;
+  background-color: #D9D9D9;
+  color: black;
+  border: none !important;
+  font-family: poppins;
+}
 
 .back {
   margin-top: 20px;

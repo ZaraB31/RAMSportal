@@ -20,8 +20,8 @@ return new class extends Migration
             $table->longText('control');
             $table->integer('residualLikelihood');
             $table->integer('residualSeverity');
-            $table->foreignId('person_id')->references('id')->on('people')->onDelete('cascade');
-            $table->foreignId('type_id')->references('id')->on('risk_types')->onDelete('cascade');
+            $table->foreignId('person_id')->nullable()->constrained('people')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('type_id')->nullable()->constrained('risk_types')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -162,6 +162,17 @@ form.fullPage {
             z-index: 1;
         }
     }
+    span.select2 {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+    span{
+        border-radius: 0;
+        background-color: #D9D9D9;
+        color: black;
+        border: none !important;
+        font-family: poppins;
+    }
 }
 
 .back {
