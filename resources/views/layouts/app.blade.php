@@ -13,6 +13,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <title>@yield('title')</title>
 </head>
+
+<script type="text/javascript">
+    $(function() {
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+
+            $('#load a').css('color', '#dfecf6');
+            
+            var url = $(this).attr('href');
+            getProjects(url);
+            window.history.pushState("", "", url);
+        });
+
+        function getProjects(url) {
+            $.ajax({
+                url : url 
+            }).done(function (data) {
+                $('.articles').html(data);
+            }).fail(function () {
+                alert('Projects could not be loaded');
+            });
+        }
+    });
+</script>
+
 <body>
     @yield('content')
 </body>

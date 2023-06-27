@@ -2,6 +2,8 @@
 
 @section('title', 'Projects')
 
+
+
 @section('content')
 <header>
     @include('includes.header', ['title' => 'Projects'])
@@ -13,7 +15,7 @@
         <button><a href="/Project/Create/Details">Add New</a></button>
     </section>
 
-    <section>
+    <section id="load">
         <table>
             <tr>
                 <th>Project Title</th>
@@ -39,6 +41,7 @@
                 </tr>
             @endif
         </table>
+        {{$projects->links()}}
     </section>
 </main>
 

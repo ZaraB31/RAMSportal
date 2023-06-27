@@ -28,14 +28,19 @@ use File;
 
 class ProjectController extends Controller
 {
-    public function __construct()
+    public function __construct(Project $projects)
     {
         $this->middleware('auth');
+        $this->projects = $projects;
     }
     
-    public function index() {
-        $projects = Project::all()->sortByDesc('created_at');
+    public function index(Request $request) {
+        $projects = $this->projects->latest('created_at')->paginate(10);
         $user = Auth::user();
+
+        if($request->ajax()) {
+            return view('projects/dashboard', ['projects' => $projects])->render();
+        }
 
         return view('projects/dashboard', ['projects' => $projects, 'user' => $user]);
     }
