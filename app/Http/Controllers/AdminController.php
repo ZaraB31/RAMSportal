@@ -15,6 +15,7 @@ use App\Models\Person;
 use App\Models\RiskType;
 use App\Models\Risk;
 use App\Models\Qualification;
+use DB;
 
 class AdminController extends Controller
 {
@@ -50,8 +51,12 @@ class AdminController extends Controller
         return view('admin/companies', ['companies' => $companies]);
     }
 
-    public function clients() {
-        $clients = Client::all()->sortBy('name');
+    public function clients(Request $request) {
+        $clients = DB::table('clients')->paginate(8);
+
+        if($request->ajax()) {
+            return view('admin/clients', ['clients' => $clients])->render();
+        }
 
         return view('admin/clients', ['clients' => $clients]);
     }
@@ -72,20 +77,32 @@ class AdminController extends Controller
         return view('admin/hospitals', ['hospitals' => $hospitals]);
     }
 
-    public function PPEs() {
-        $PPEs = Ppe::all();
+    public function PPEs(Request $request) {
+        $PPEs = DB::table('ppes')->orderBy('name')->paginate(8);
+
+        if($request->ajax()) {
+            return view('admin/PPEs', ['PPEs' => $PPEs])->render();
+        }
 
         return view('admin/PPEs', ['PPEs' => $PPEs]);
     }
 
-    public function sections() {
-        $sections = Section::all()->sortBy('name');
+    public function sections(Request $request) {
+        $sections = DB::table('sections')->orderBy('name')->paginate(8);
+
+        if($request->ajax()) {
+            return view('admin/sections', ['sections' => $sections])->render();
+        }
 
         return view('admin/sections', ['sections' => $sections]);
     }
 
-    public function tools() {
-        $tools = Tool::all()->sortBy('name');
+    public function tools(Request $request) {
+        $tools = DB::table('tools')->orderBy('name')->paginate(8);
+
+        if($request->ajax()) {
+            return view('admin/tools', ['tools' => $tools])->render();
+        }
 
         return view('admin/tools', ['tools' => $tools]);
     }
@@ -120,8 +137,12 @@ class AdminController extends Controller
                                     'after' => $after]);
     }
 
-    public function qualifications() {
-        $qualifications = Qualification::all();
+    public function qualifications(Request $request) {
+        $qualifications = DB::table('qualifications')->orderBy('name')->paginate(8);
+
+        if($request->ajax()) {
+            return view('admin/qualifications', ['qualifications' => $qualifications])->render();
+        }
 
         return view('admin/qualifications', ['qualifications' => $qualifications]);
     }

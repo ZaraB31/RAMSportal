@@ -25,11 +25,6 @@
                         <p><b>Company: </b>{{$operative->company->name}}</p>
                         <p><b>Position: </b>{{$operative->position}}</p>
                         <p><b>Phone Number: </b>0{{$operative->phoneNo}}</p>
-                        <p><b>Qualifications: </b>
-                        @foreach($operative->qualification as $qualification)
-                        {{$qualification->name}}, 
-                        @endforeach
-                        </p>
                     </div>
                 </div>
                 @endforeach
@@ -65,14 +60,6 @@
                     <option value="{{$company->id}}">{{$company->name}}</option>
                     @endforeach
                 </select>
-
-                <label for="qualification_id">Qualifications:</label>
-                @foreach($qualifications as $qualification)
-                <div>
-                    <input type="checkbox" name="qualification_id[]" id="qualification_id" value="{{$qualification->id}}">
-                    <label for="qualification_id">{{$qualification->name}}</label>
-                </div>
-                @endforeach
 
                 <input class="inverse" type="submit" value="Save">
             </form>

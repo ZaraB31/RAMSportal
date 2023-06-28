@@ -34,7 +34,7 @@
             }).done(function (data) {
                 $('.articles').html(data);
             }).fail(function () {
-                alert('Projects could not be loaded');
+                alert('The data could not be loaded at this time, please try again later');
             });
         }
     });

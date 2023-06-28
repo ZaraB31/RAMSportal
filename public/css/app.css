@@ -329,14 +329,15 @@ main .projectsSearch .back {
 }
 main .operative {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: start;
 }
 main .operative img {
-  width: 25%;
+  width: 18%;
+  margin-right: 2%;
 }
 main .operative div {
-  width: 70%;
+  width: 80%;
 }
 main .ppeDisplay {
   display: flex;

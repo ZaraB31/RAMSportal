@@ -35,12 +35,24 @@
             <p><b>End date: </b> {{date('jS F Y', strtotime($project->detail->end))}}</p>
             <p><b>Working Hours: </b>{{$project->detail->workingHours}}</p>
             <p><b>Nearest A&E: </b>{{$project->detail->hospital->name}} - {{$project->detail->hospital->address}}</p>
-            <p><b>Site Manager: </b>{{$project->detail->manager->name}}</p>
-            <p><b>Site Supervisor: </b>{{$project->detail->supervisor->name}}</p>
+            <p><b>Site Manager: </b>
+            @if($project->manager_id === '')
+            <span style="color:#F6361E; font-weight:bold;">This project does not have a manager assigned. Please update the project to assign a manager.</span>
+            @else
+            {{$project->detail->manager->name}}
+            @endif</p>
+
+            <p><b>Site Supervisor: </b>
+            @if($project->supervisor_id === '')
+            <span style="color:#F6361E; font-weight:bold;">This project does not have a supervisor assigned. Please update the project to assign a supervisor.</span>
+            @else
+            {{$project->detail->supervisor->name}}
+            @endif</p>
+
             <p><b>Out of hours phone number: </b>0{{$project->detail->emergencyPhone}}</p>
             <p><b>Training Requirements: </b>
                 @if($project->qualification->count() === 0)
-                No Qualifications added
+                <span style="color:#F6361E; font-weight:bold;">No Training Requirments added. Please update the project to add training requirements.</span>
                 @else
                 @foreach($project->qualification as $qualification)
                 {{$qualification->name}},
@@ -49,7 +61,7 @@
             </p>
             <p><b>Site Operatives: </b>
             @if($project->operative->count() === 0)
-                No Operatives Added 
+                <span style="color:#F6361E; font-weight:bold;">No Operatives Added. Please update the project to add operatives.</span>
             @else
             <div class="siteOperatives">
                 @foreach($project->operative as $operative)
@@ -57,11 +69,7 @@
                     <img src="/ProfilePictures/{{$operative->profilePic}}" alt="{{$operative->name}}">
                     <h3>{{$operative->name}}</h3>
                     <p><b>Company: </b>{{$operative->company->name}}</p>
-                    <p><b>Qualifications: </b>
-                    @foreach($operative->qualification as $qualification)
-                    {{$qualification->name}},
-                    @endforeach
-                    </p>
+                    <p><b>Position: </b>{{$operative->position}}</p>
                 </div>
                 @endforeach
             </div>

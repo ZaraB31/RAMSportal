@@ -14,7 +14,7 @@
 
     @include('includes.success')
 
-    <section class="twoThirds">
+    <section id="load" class="twoThirds">
         <article>
             <table>
                 <tr>
@@ -33,7 +33,7 @@
                     </tr>
                 @endif
             </table>
-            
+            {{$clients->links()}}
         </article>
 
         <aside>

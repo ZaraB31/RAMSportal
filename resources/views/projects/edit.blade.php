@@ -20,6 +20,9 @@
 
             <h2>Project Details</h2>
 
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" value="{{$project->title}}">
+
             <label for="jobNo">Job Number:</label>
             <input type="text" name="jobNo" id="jobNo" value="{{$project->jobNo}}">
 

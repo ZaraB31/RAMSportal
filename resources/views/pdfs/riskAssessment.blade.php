@@ -10,7 +10,7 @@
     <header>
     @if($project->company_id === 1)
         <img src="{{ public_path('images/pdf-logo-mega.jpg') }}" alt="">
-        <div>
+        <div style="margin-bottom:20px;">
             <table>
                 <tr>
                     <td>Health and Safety Site Specific Risk Assessment Method Statement</td>
@@ -23,7 +23,7 @@
             </table>
         </div>
         @elseif($project->company_id === 2)
-        <div>
+        <div style="margin-bottom:20px;">
             <table>
                 <tr>
                     <td style="width: 10%" rowspan="2"><img style="width:80%; margin:0;"src="{{ public_path('images/A PARRY LOGO PNG SQUARE - BLACK.png') }}" alt=""></td>

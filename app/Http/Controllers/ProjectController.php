@@ -295,6 +295,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         $project['jobNo'] = $request['jobNo'];
+        $project['title'] = $request['title'];
         $project->update();
 
         $projectDetails = [

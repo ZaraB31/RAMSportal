@@ -16,8 +16,4 @@ class Qualification extends Model
     public function project() {
         return $this->belongsToMany(Project::class, 'project_qualifications');
     }
-
-    public function operative() {
-        return $this->belongsToMany(Operative::class, 'operative_qualifications');
-    }
 }
