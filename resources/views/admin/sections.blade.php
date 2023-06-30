@@ -23,7 +23,10 @@
                 @if($sections->count() > 0)
                     @foreach($sections as $section)
                     <tr>
-                        <td>{{$section->name}} <i onclick="openForm('DeleteSection', {{$section->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></td>
+                        <td>{{$section->name}} 
+                            <i onclick="openForm('DeleteSection', {{$section->id}})" style="float:right;" class="fa-regular fa-trash-can"></i>
+                            <i onclick="openNameForm('EditSection', {{ $section->id }}, '{{ $section->name }}')" style="float:right; margin-right: 5px" class="fa-solid fa-pen-to-square"></i>
+                        </td>
                     </tr>
                     @endforeach
                 @else 
@@ -49,6 +52,22 @@
         </aside>
     </section>
 </main>
+
+<div class="deleteForm" id="EditSection" style="display:none;">
+    <h2>Edit Section</h2>
+    
+    <form style="width:100%; float:none; margin-top:10px;" action="" method="post">
+        @include('includes.error')
+
+        <label for="name">Name:</label>
+        <input style="width:99%; margin-bottom:10px;" type="text" name="name" id="name" value="">
+
+        <input style="width:40%" class="delete" type="submit" value="Update">
+    </form>
+
+    <button onClick="closeForm('EditSection')">Cancel</button>
+
+</div>
 
 <div class="deleteForm" id="DeleteSection" style="display:none;">
     <h2>Are you sure you want to delete this section?</h2>

@@ -54,6 +54,9 @@ main {
         align-items: start;
         article {
             width: 57%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
         aside {
             width: 35%;
@@ -69,6 +72,14 @@ main {
                 margin-bottom: 50px;
             }
         }
+    }
+    .profile {
+        width: 100px;
+        position: absolute;
+        top: 82px;
+        right: 10%;
+        height: 100px;
+        object-fit: cover;
     }
     .projectsSearch {
         display: flex;
@@ -89,8 +100,11 @@ main {
         display: flex;
         flex-wrap: wrap;
         align-items: start;
+        width: 100%;
         img {
             width: 18%;
+            height: max-content;
+            object-fit: cover;
             margin-right: 2%;
         }
         div {
@@ -190,10 +204,9 @@ main {
         justify-content: space-between;
         align-items: flex-start;
         div {
-            width: 30%;
+            width: 25%;
             img {
-                width: 80%;
-                margin-left: 10%;
+                width: 70%;
                 object-fit: cover;
             }
         }
@@ -235,6 +248,7 @@ main {
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
             div {
                 span, a {
                     font-family: 'Poppins', sans-serif;

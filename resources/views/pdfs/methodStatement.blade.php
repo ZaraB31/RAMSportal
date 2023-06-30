@@ -114,7 +114,7 @@
             @foreach($project->operative as $operative)
             <table class="operativesTable">
                 <tr>
-                    <td style="width:20%"><img src="../public/ProfilePictures/{{$operative->profilePic}}" alt=""></td>
+                    <td style="width:15%; border-right:none;"><img src="../public/ProfilePictures/{{$operative->profilePic}}" alt=""></td>
                     <td>
                         <ul>
                             <li><b>Name: {{$operative->name}}</b></li>

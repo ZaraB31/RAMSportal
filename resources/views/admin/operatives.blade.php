@@ -21,7 +21,10 @@
                 <div class="operative card">
                     <img src="/ProfilePictures/{{$operative->profilePic}}" alt="{{$operative->name}}">
                     <div>
-                        <h3>{{$operative->name}} <i onclick="openForm('DeleteOperative', {{$operative->id}})" style="float:right;" class="fa-regular fa-trash-can"></i></h3>
+                        <h3>{{$operative->name}} 
+                            <i onclick="openForm('DeleteOperative', {{$operative->id}})" style="float:right;" class="fa-regular fa-trash-can"></i>
+                            <a href="/Admin/Operatives/Edit/{{$operative->id}}"><i style="float:right; margin-right: 10px;" class="fa-solid fa-pen-to-square"></i></a>
+                        </h3>
                         <p><b>Company: </b>{{$operative->company->name}}</p>
                         <p><b>Position: </b>{{$operative->position}}</p>
                         <p><b>Phone Number: </b>0{{$operative->phoneNo}}</p>
@@ -55,7 +58,7 @@
 
                 <label for="company_id">Company:</label>
                 <select name="company_id" id="company_id">
-                    <option value=".">Select..</option>
+                    <option value="">Select..</option>
                     @foreach($companies as $company)
                     <option value="{{$company->id}}">{{$company->name}}</option>
                     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Operative;
+use App\Models\Company;
 use File;
 
 class OperativeController extends Controller
@@ -36,10 +37,15 @@ class OperativeController extends Controller
             'company_id.required' => 'A company is required',
         ]);
 
-        $profile = $request->file('profilePic');
-        $profileName = date('Y-m-d').'-'.$request['name'].'.'.$profile->getClientOriginalExtension();
-        $target_path = public_path('/ProfilePictures');
-        $profile->move($target_path, $profileName);
+        if($request['profilePic'] !== null) {
+            $profile = $request->file('profilePic');
+            $profileName = date('Y-m-d').'-'.$request['name'].'.'.$profile->getClientOriginalExtension();
+            $target_path = public_path('/ProfilePictures');
+            $profile->move($target_path, $profileName);
+        } else {
+            $profileName = "placeholderOperative.png";
+        }
+        
 
         $operative = Operative::create(['name' => $request['name'],
                                         'phoneNo' => $request['phoneNo'],
@@ -48,6 +54,35 @@ class OperativeController extends Controller
                                         'company_id' => $request['company_id']]);
 
         return redirect()->route('adminOperatives')->with('success', 'Operative Added!');
+    }
+
+    public function edit($id) {
+        $operative = Operative::findOrFail($id);
+        $companies = Company::all();
+
+        return view('admin/editOperative', ['operative' => $operative, 'companies' => $companies]);
+    }
+
+    public function update(Request $request, $id) {
+        $operative = Operative::findOrFail($id);
+
+        if($request['profilePic'] === null) {
+            $profileName = $operative['profilePic'];
+        } else {
+            $profile = $request->file('profilePic');
+            $profileName = date('Y-m-d').'-'.$request['name'].'.'.$profile->getClientOriginalExtension();
+            $target_path = public_path('/ProfilePictures');
+            $profile->move($target_path, $profileName);
+        }
+
+        $operative['name'] = $request['name'];
+        $operative['phoneNo'] = $request['phoneNo'];
+        $operative['profilePic'] = $profileName;
+        $operative['position'] = $request['position'];
+        $operative['company_id'] = $request['company_id'];
+        $operative->update();
+
+        return redirect()->route('adminOperatives', $id)->with('success', 'Operative Updated!');
     }
 
     public function delete($id) {

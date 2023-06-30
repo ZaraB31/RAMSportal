@@ -31,6 +31,15 @@ class QualificationController extends Controller
         return redirect()->route('adminQualifications')->with('success', 'Qualification added!');
     }
 
+    public function update($id, Request $request) {
+        $qualification = Qualification::findOrFail($id);
+
+        $qualification['name'] = $request['name'];
+        $qualification->update();
+
+        return redirect()->route('adminQualifications');
+    }
+
     public function delete($id) {
         $qualification = Qualification::findOrFail($id);
 

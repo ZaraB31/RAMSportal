@@ -216,6 +216,7 @@ form.fullPage span {
   border: none;
   border-radius: 8px;
   margin-bottom: 15px;
+  width: 100%;
 }
 .card h3 {
   margin-top: 0;
@@ -297,6 +298,9 @@ main .twoThirds {
 }
 main .twoThirds article {
   width: 57%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 main .twoThirds aside {
   width: 35%;
@@ -311,6 +315,15 @@ main .twoThirds aside h3 {
 }
 main .twoThirds aside form {
   margin-bottom: 50px;
+}
+main .profile {
+  width: 100px;
+  position: absolute;
+  top: 82px;
+  right: 10%;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 main .projectsSearch {
   display: flex;
@@ -331,9 +344,14 @@ main .operative {
   display: flex;
   flex-wrap: wrap;
   align-items: start;
+  width: 100%;
 }
 main .operative img {
   width: 18%;
+  height: -moz-max-content;
+  height: max-content;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-right: 2%;
 }
 main .operative div {
@@ -431,11 +449,10 @@ main .siteOperatives {
   align-items: flex-start;
 }
 main .siteOperatives div {
-  width: 30%;
+  width: 25%;
 }
 main .siteOperatives div img {
-  width: 80%;
-  margin-left: 10%;
+  width: 70%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -475,6 +492,7 @@ main #load nav {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 main #load nav div span, main #load nav div a {
   font-family: "Poppins", sans-serif;

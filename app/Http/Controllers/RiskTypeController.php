@@ -30,6 +30,15 @@ class RiskTypeController extends Controller
         return redirect()->route('adminRiskTypes')->with('success', 'Risk Type added!');
     }
 
+    public function update($id, Request $request) {
+        $riskType = RiskType::findOrFail($id);
+
+        $riskType['name'] = $request['name'];
+        $riskType->update();
+
+        return redirect()->route('adminRiskTypes');
+    }
+
     public function delete($id) {
         $type = RiskType::findOrFail($id);
 

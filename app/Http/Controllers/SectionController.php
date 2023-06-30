@@ -30,6 +30,15 @@ class SectionController extends Controller
         return redirect()->route('adminSections')->with('success', 'Section added!');
     }
 
+    public function update($id, Request $request) {
+        $section = Section::findOrFail($id);
+
+        $section['name'] = $request['name'];
+        $section->update();
+
+        return redirect()->route('adminSections');
+    }
+
     public function delete($id) {
         $section = Section::findOrFail($id);
 

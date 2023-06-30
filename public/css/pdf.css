@@ -79,9 +79,6 @@ table.operativesTable tr td {
 table.operativesTable tr td ul {
   list-style-type: none;
 }
-table.operativesTable tr td ul li {
-  padding: 10px 0;
-}
 
 .pageBreak {
   page-break-after: always;

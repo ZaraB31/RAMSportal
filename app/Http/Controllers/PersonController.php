@@ -31,6 +31,15 @@ class PersonController extends Controller
         return redirect()->route('adminPeople')->with('success', 'People at Risk added!');
     }
 
+    public function update($id, Request $request) {
+        $person = Person::findOrFail($id);
+
+        $person['person'] = $request['person'];
+        $person->update();
+
+        return redirect()->route('adminPersons');
+    }
+
     public function delete($id) {
         $person = Person::findOrFail($id);
 

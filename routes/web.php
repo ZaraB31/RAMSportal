@@ -53,6 +53,8 @@ Route::get('/Admin/Qualifications', [App\Http\Controllers\AdminController::class
 Route::post('Admin/Companies/Create', [App\Http\Controllers\CompanyController::class, 'store'])->name('storeCompany');
 Route::post('Admin/Clients/Create', [App\Http\Controllers\ClientController::class, 'store'])->name('storeClient');
 Route::post('Admin/Operatives/Create', [App\Http\Controllers\OperativeController::class, 'store'])->name('storeOperative');
+Route::get('Admin/Operatives/Edit/{id}', [App\Http\Controllers\OperativeController::class, 'edit'])->name('editOperative');
+Route::post('Admin/Operatives/Edit/{id}', [App\Http\Controllers\OperativeController::class, 'update'])->name('updateOperative');
 Route::post('Admin/Hospitals/Create', [App\Http\Controllers\HospitalController::class, 'store'])->name('storeHospital');
 Route::post('Admin/PPE/Create', [App\Http\Controllers\PpeController::class, 'store'])->name('storePPE');
 Route::post('Admin/Sections/Create', [App\Http\Controllers\SectionController::class, 'store'])->name('storeSection');
@@ -64,6 +66,15 @@ Route::get('Admin/Risks/Edit/{id}', [App\Http\Controllers\RiskController::class,
 Route::post('Admin/Risks/Edit/{id}', [App\Http\Controllers\RiskController::class, 'update'])->name('updateRisk');
 Route::post('Admin/RiskTypes/Create', [App\Http\Controllers\RiskTypeController::class, 'store'])->name('storeRiskType');
 Route::post('Admin/Qualifications/Create', [App\Http\Controllers\QualificationController::class, 'store'])->name('storeQualification');
+
+Route::post('Admin/EditClient/{id}', [App\Http\Controllers\ClientController::class, 'update'])->name('updateClient');
+Route::post('Admin/EditHospital/{id}', [App\Http\Controllers\HospitalController::class, 'update'])->name('updateHospital');
+Route::post('Admin/EditPPE/{id}', [App\Http\Controllers\PPEController::class, 'update'])->name('updatePpe');
+Route::post('Admin/EditSection/{id}', [App\Http\Controllers\SectionController::class, 'update'])->name('updateSection');
+Route::post('Admin/EditTool/{id}', [App\Http\Controllers\ToolController::class, 'update'])->name('updateTool');
+Route::post('Admin/EditPeople/{id}', [App\Http\Controllers\PersonController::class, 'update'])->name('updatePerson');
+Route::post('Admin/EditRiskType/{id}', [App\Http\Controllers\RiskTypeController::class, 'update'])->name('updateRiskType');
+Route::post('Admin/EditQualification/{id}', [App\Http\Controllers\QualificationController::class, 'update'])->name('updateQualification');
 
 Route::delete('/DeleteClient/{id}', [App\Http\Controllers\ClientController::class, 'delete'])->name('deleteClient');
 Route::delete('/DeleteCompany/{id}', [App\Http\Controllers\CompanyController::class, 'delete'])->name('deleteCompany');

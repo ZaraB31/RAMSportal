@@ -31,6 +31,15 @@ class ToolController extends Controller
         return redirect()->route('adminTools')->with('success', 'Tool added!');
     }
 
+    public function update($id, Request $request) {
+        $tool = Tool::findOrFail($id);
+
+        $tool['name'] = $request['name'];
+        $tool->update();
+
+        return redirect()->route('adminTools');
+    }
+
     public function delete($id) {
         $tool = Tool::findOrFail($id);
 

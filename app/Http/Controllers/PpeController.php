@@ -28,6 +28,15 @@ class PpeController extends Controller
         return redirect()->route('adminPPE')->with('success', 'PPE added!');
     }
 
+    public function update($id, Request $request) {
+        $PPE = Ppe::findOrFail($id);
+
+        $PPE['name'] = $request['name'];
+        $PPE->update();
+
+        return redirect()->route('adminPPE');
+    }
+
     public function delete($id) {
         $PPE = Ppe::findOrFail($id);
 

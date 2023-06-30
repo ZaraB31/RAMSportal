@@ -33,6 +33,16 @@ class HospitalController extends Controller
         return redirect()->route('adminHospitals')->with('success', 'Hospital added!');
     }
 
+    public function update($id, Request $request) {
+        $hospital = Hospital::findOrFail($id);
+
+        $hospital['name'] = $request['name'];
+        $hospital['address'] = $request['address'];
+        $hospital->update();
+
+        return redirect()->route('adminHospitals');
+    }
+
     public function delete($id) {
         $hospital = findOrFail($id);
 
